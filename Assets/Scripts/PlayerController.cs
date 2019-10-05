@@ -104,7 +104,6 @@ public class PlayerController : MonoBehaviour
                 int moneyStolen = collider.GetComponent<Pedestrian>().Pickpocket();
             }
         }
-
-        currentState = PlayerState.WALKING;
+        if (currentState == PlayerState.STEALING) currentState = PlayerState.WALKING;
     }
 }

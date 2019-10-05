@@ -4,10 +4,17 @@ using UnityEngine;
 
 public class Police : MonoBehaviour
 {
-    [SerializeField] private bool arresting = false;
-    [SerializeField] private float moveSpeed = 6f;
+    [SerializeField] private Rigidbody2D rigidBody;
+    [SerializeField] private Vector2 moveSpeedInterval;
 
+    private float moveSpeed = 1f;
+    private bool arresting = false;
     private int direction = 1;
+
+    private void Start()
+    {
+        moveSpeed = Random.Range(moveSpeedInterval.x, moveSpeedInterval.y);
+    }
 
     void Update()
     {
@@ -23,7 +30,7 @@ public class Police : MonoBehaviour
     {
         if (!arresting)
         {
-            transform.Translate(Vector2.right * direction * moveSpeed * Time.deltaTime);
+            rigidBody.MovePosition(new Vector2(transform.position.x, transform.position.y) + Vector2.right * direction * moveSpeed * Time.deltaTime);
         }
     }
 

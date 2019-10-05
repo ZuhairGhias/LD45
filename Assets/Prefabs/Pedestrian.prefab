@@ -142,5 +142,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c1c976c9f87797d42860c9280e28e437, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pickpocketed: 0
-  moveSpeed: 1
+  rigidBody: {fileID: 4870651421949545569}
+  moveSpeedInterval: {x: 2, y: 4}
+  spriteRenderer: {fileID: 4870651421949545583}
+  pickpocketedColor: {r: 0.041382253, g: 0.5, b: 0, a: 0.88235295}

@@ -101,7 +101,7 @@ public class PlayerController : MonoBehaviour
         {
             if (collider.GetComponent<Pedestrian>() != null)
             {
-                collider.GetComponent<Pedestrian>().Pickpocket();
+                int moneyStolen = collider.GetComponent<Pedestrian>().Pickpocket();
             }
         }
 

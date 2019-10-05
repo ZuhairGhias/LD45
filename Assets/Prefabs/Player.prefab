@@ -155,7 +155,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 866ed1fa8f5bdd741bc7c78fa776b6f1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 10
+  moveSpeed: 8
   stealDelay: 1
   hiddenColor: {r: 0.23584908, g: 0.23584908, b: 0.23584908, a: 0.74509805}
   contactFilter:

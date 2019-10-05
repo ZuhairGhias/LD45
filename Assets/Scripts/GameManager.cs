@@ -6,14 +6,29 @@ public class GameManager : MonoBehaviour
 {
     public enum GameState { INPROGRESS, UPGRADING, GAMEOVER }
 
+    [Header("Game System")]
     [SerializeField] private SpawnSystem spawnSystem;
+
+    [Header("Timer Settings")]
     [SerializeField] private TimerUI timerUI;
     [SerializeField] private float timeRemaining = 20f;
-    [SerializeField] private Vector2 spawnIntervals;
-    [SerializeField] private float policeSpawnChance = 0.25f;
+
+    [Header("Heat Bar Settings")]
+    [SerializeField] private HeatBarUI heatBarUI;
+    [SerializeField] private float currentHeat = 0f;
+    [SerializeField] private float heatPassiveCooldown = 0.1f;
+    [SerializeField] private float pickpocketHeat = 0.15f;
+
+    [Header("Shop System")]
+    [SerializeField] private int money = 0;
 
     private GameState currentState = GameState.INPROGRESS;
     private int currentRound = 0;
+
+    private void Awake()
+    {
+        Pedestrian.OnPickpocket += StealMoney;
+    }
 
     private void Start()
     {
@@ -25,13 +40,21 @@ public class GameManager : MonoBehaviour
         UpdateTimer();
     }
 
+    public float GetCurrentHeat()
+    {
+        return currentHeat;
+    }
+
     public void StartRound(int round)
     {
-        StartCoroutine(SpawnNPCs());
+        spawnSystem.StartSpawning();
+        StartCoroutine(CooldownHeat());
     }
 
     public void EndRound(bool success)
     {
+        spawnSystem.StopSpawning();
+
         if (success)
         {
             Debug.Log("[GameManager] Round complete, upgrading phase");
@@ -47,29 +70,21 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    private IEnumerator SpawnNPCs()
+    private void StealMoney(int moneyStolen)
     {
-        while (currentState == GameState.INPROGRESS)
+        Debug.Log("[GameManager] $" + moneyStolen + " stolen!");
+
+        if (moneyStolen > 0)
         {
-            // Randomize movement direction
-            int direction = 1;
-            if (Random.Range(0f, 1f) < 0.5f)
-            {
-                direction = -1;
-            }
-
-            // Randomize NPC type
-            if (Random.Range(0f, 1f) <= policeSpawnChance)
-            {
-                spawnSystem.SpawnPolice(direction);
-            }
-            else
-            {
-                spawnSystem.SpawnPedestrian(direction);
-            }
-
-            yield return new WaitForSeconds(Random.Range(spawnIntervals.x, spawnIntervals.y));
+            money += moneyStolen;
+            AdjustHeat(pickpocketHeat);
         }
+    }
+
+    private void AdjustHeat(float delta)
+    {
+        currentHeat = Mathf.Clamp(currentHeat + delta, 0f, 1f);
+        heatBarUI.UpdateHeat(currentHeat);
     }
 
     private void UpdateTimer()
@@ -80,10 +95,20 @@ public class GameManager : MonoBehaviour
 
             if (timeRemaining <= 0f)
             {
-                currentState = GameState.UPGRADING;
+                EndRound(true);
             }
 
             timerUI.UpdateTimer(timeRemaining);
+        }
+    }
+
+    private IEnumerator CooldownHeat()
+    {
+        while (currentState == GameState.INPROGRESS)
+        {
+            AdjustHeat(-heatPassiveCooldown * Time.deltaTime);
+
+            yield return null;
         }
     }
 }

@@ -9,8 +9,30 @@ public class SpawnSystem : MonoBehaviour
 
     [SerializeField] private Transform spawnPointLeft;
     [SerializeField] private Transform spawnPointRight;
+    
+    [SerializeField] private Vector2 spawnIntervals;
+    [SerializeField] private float basePoliceSpawnChance = 0f;
+    
+    private GameManager gameManager;
+    private Coroutine spawnCoroutine;
 
-    private bool active = true;
+    private void Start()
+    {
+        gameManager = FindObjectOfType<GameManager>();
+    }
+
+    public void StartSpawning()
+    {
+        spawnCoroutine = StartCoroutine(SpawnNPCs());
+    }
+
+    public void StopSpawning()
+    {
+        if (spawnCoroutine != null)
+        {
+            StopCoroutine(spawnCoroutine);
+        }
+    }
 
     public void SpawnPolice(int direction)
     {
@@ -53,6 +75,31 @@ public class SpawnSystem : MonoBehaviour
             default:
                 Debug.LogError("[SpawnSystem] Invalid direction input in SpawnPedestrian");
                 break;
+        }
+    }
+    
+    private IEnumerator SpawnNPCs()
+    {
+        while(true)
+        {
+            // Randomize movement direction
+            int direction = 1;
+            if (Random.Range(0f, 1f) < 0.5f)
+            {
+                direction = -1;
+            }
+
+            // Randomize NPC type
+            if (Random.Range(0f, 1f) <= basePoliceSpawnChance + gameManager.GetCurrentHeat())
+            {
+                SpawnPolice(direction);
+            }
+            else
+            {
+                SpawnPedestrian(direction);
+            }
+
+            yield return new WaitForSeconds(Random.Range(spawnIntervals.x, spawnIntervals.y));
         }
     }
 }

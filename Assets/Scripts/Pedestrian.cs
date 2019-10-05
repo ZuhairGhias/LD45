@@ -22,6 +22,7 @@ public class Pedestrian : MonoBehaviour
     public int Loot()
     {
         looted = true;
+        print("ped looted");
         return 10;
     }
 

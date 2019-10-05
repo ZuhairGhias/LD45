@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<< HEAD
 guid: 5775596daacc41342995a2af978851e7
+=======
+guid: b89e33c475fa55e4cae89e7656c2ad33
+>>>>>>> basic_npc
 folderAsset: yes
 DefaultImporter:
   externalObjects: {}

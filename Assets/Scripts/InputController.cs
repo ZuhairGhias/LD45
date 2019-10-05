@@ -5,7 +5,7 @@ using UnityEngine;
 public class InputController : MonoBehaviour
 {
 
-    public PlayerController pc;
+    private PlayerController pc;
 
     // Start is called before the first frame update
     void Start()

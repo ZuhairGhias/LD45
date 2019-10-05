@@ -9,6 +9,7 @@ public class PlayerController : MonoBehaviour
     public float stealDelayMs;
 
     private bool looting;
+    private bool arrested = false;
 
     private Rigidbody2D rb;
     private CircleCollider2D cc;
@@ -34,8 +35,13 @@ public class PlayerController : MonoBehaviour
     public void Move(float amount)
     {
         //rb.MovePosition(rb.position + (Vector2.right * amount * moveSpeed * Time.deltaTime));
-        if (looting) return;
+        if (looting || arrested) return;
         transform.Translate(Vector2.right * amount * moveSpeed * Time.deltaTime);
+    }
+
+    public void Arrest() {
+        print(arrested);
+        arrested = true;
     }
 
     public void Steal()

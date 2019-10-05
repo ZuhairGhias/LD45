@@ -4,7 +4,9 @@ using UnityEngine;
 
 public class SpawnSystem : MonoBehaviour
 {
+    public int spawnRate;
     public Pedestrian ped;
+    public Police pol;
     public Transform SpawnPointLeft;
     public Transform SpawnPointRight;
 
@@ -12,7 +14,7 @@ public class SpawnSystem : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Spawn();
+        SpawnPolice();
     }
 
     // Update is called once per frame
@@ -21,7 +23,12 @@ public class SpawnSystem : MonoBehaviour
         
     }
 
-    public void Spawn()
+    public void SpawnPolice()
+    {
+        Instantiate(pol, SpawnPointLeft.transform.position, Quaternion.identity);
+    }
+
+    public void SpawnPedestrian()
     {
         Instantiate(ped, SpawnPointLeft.transform.position, Quaternion.identity);
     }

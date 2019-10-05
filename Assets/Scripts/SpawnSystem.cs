@@ -4,69 +4,55 @@ using UnityEngine;
 
 public class SpawnSystem : MonoBehaviour
 {
-    [SerializeField]
-    private float spawnDelay = 1;
-    public Pedestrian ped;
-    public Police pol;
-    public Transform SpawnPointLeft;
-    public Transform SpawnPointRight;
+    [SerializeField] private Pedestrian pedestrianPrefab;
+    [SerializeField] private Police policePrefab;
+
+    [SerializeField] private Transform spawnPointLeft;
+    [SerializeField] private Transform spawnPointRight;
 
     private bool active = true;
 
-
-    // Start is called before the first frame update
-    void Start()
+    public void SpawnPolice(int direction)
     {
-        StartCoroutine(SpawnRoutine());
-    }
+        Police police;
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
-    public void SpawnPolice(Transform point, float speedModifier)
-    {
-        Police newPol = Instantiate(pol, point.position, Quaternion.identity);
-        newPol.moveSpeed *= speedModifier;
-    }
-
-    public void SpawnPedestrian(Transform point, float speedModifier)
-    {
-        Pedestrian newPed = Instantiate(ped, point.position, Quaternion.identity);
-        newPed.moveSpeed *= speedModifier;
-    }
-
-    private IEnumerator SpawnRoutine()
-    {
-        while (active)
+        switch (direction)
         {
-            int rand = Random.Range(0, 5);
-            GameObject npc = null;
-            if(rand == 0)
-            {
-                SpawnPedestrian(SpawnPointLeft, 1);
-            }
-            else if(rand == 1)
-            {
-                SpawnPolice(SpawnPointLeft, 1);
-            }
-            else if(rand == 2)
-            {
-                SpawnPedestrian(SpawnPointRight, -1);
-            }
-            else
-            {
-                SpawnPolice(SpawnPointRight, -1);
-            }
+            case -1:
+                police = Instantiate(policePrefab, spawnPointRight.position, Quaternion.identity);
+                police.SetDirection(direction);
+                break;
 
-            rand = Random.Range(0, 2);
+            case 1:
+                police = Instantiate(policePrefab, spawnPointLeft.position, Quaternion.identity);
+                police.SetDirection(direction);
+                break;
 
-            yield return new WaitForSeconds(spawnDelay);
+            default:
+                Debug.LogError("[SpawnSystem] Invalid direction input in SpawnPolice");
+                break;
         }
     }
 
+    public void SpawnPedestrian(int direction)
+    {
+        Pedestrian pedestrian;
 
+        switch (direction)
+        {
+            case -1:
+                pedestrian = Instantiate(pedestrianPrefab, spawnPointRight.position, Quaternion.identity);
+                pedestrian.SetDirection(direction);
+                break;
 
+            case 1:
+                pedestrian = Instantiate(pedestrianPrefab, spawnPointLeft.position, Quaternion.identity);
+                pedestrian.SetDirection(direction);
+                break;
+
+            default:
+                Debug.LogError("[SpawnSystem] Invalid direction input in SpawnPedestrian");
+                break;
+        }
+    }
 }

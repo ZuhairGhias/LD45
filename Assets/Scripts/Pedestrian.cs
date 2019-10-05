@@ -4,30 +4,31 @@ using UnityEngine;
 
 public class Pedestrian : MonoBehaviour
 {
-    public bool looted;
-    public float moveSpeed;
+    [SerializeField] private bool pickpocketed = false;
+    [SerializeField] private float moveSpeed = 6f;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        looted = false;
-    }
-
-    // Update is called once per frame
+    private int direction = 1;
+    
     void Update()
     {
-        Move(1);
+        Move();
     }
 
-    public int Loot()
+    public void SetDirection(int newDirection)
     {
-        looted = true;
-        print("ped looted");
-        return 10;
+        direction = newDirection;
     }
 
-    public void Move(float amount)
+    public void Move()
     {
-        transform.Translate(Vector2.right * amount * moveSpeed * Time.deltaTime);
+        transform.Translate(Vector2.right * direction * moveSpeed * Time.deltaTime);
+    }
+
+    public int Pickpocket()
+    {
+        Debug.Log("[Pedestrian] Pedestrian pickpocketed!");
+
+        pickpocketed = true;
+        return Random.Range(1, 5);
     }
 }

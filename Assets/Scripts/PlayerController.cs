@@ -4,81 +4,97 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
+    public enum PlayerState { WALKING, STEALING, HIDING, ARRESTED }
 
-    public float moveSpeed;
-    public float stealDelayMs;
+    [SerializeField] private float moveSpeed = 10f;
+    [SerializeField] private float stealDelay = 1f;
+    [SerializeField] private Color hiddenColor;
+    [SerializeField] private ContactFilter2D contactFilter;
 
-    public bool looting;
-    public bool arrested = false;
+    private Rigidbody2D rigidBody;
+    private Collider2D playerCollider;
+    private SpriteRenderer spriteRenderer;
+    private List<Collider2D> colliderOverlaps;
+    
+    private PlayerState currentState = PlayerState.WALKING;
 
-    private Rigidbody2D rb;
-    private CircleCollider2D cc;
-    private List<Collider2D> peds;
-    private SpriteRenderer sr;
-    public ContactFilter2D contact;
-
-
-
-    // Start is called before the first frame update
     void Start()
     {
-        rb = GetComponent<Rigidbody2D>();
-        cc = GetComponent<CircleCollider2D>();
-        sr = GetComponent<SpriteRenderer>();
-        peds = new List<Collider2D>();
+        rigidBody = GetComponent<Rigidbody2D>();
+        playerCollider = GetComponent<Collider2D>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
+
+        colliderOverlaps = new List<Collider2D>();
     }
 
-    // Update is called once per frame
-    void Update()
+    public void Move(float direction)
     {
-        
+        if (currentState == PlayerState.WALKING)
+        {
+            rigidBody.MovePosition(new Vector2(transform.position.x, transform.position.y) + Vector2.right * direction * moveSpeed * Time.deltaTime);
+        }
     }
 
-    public void Move(float amount)
+    public void ToggleHide()
     {
-        if (looting || arrested) return;
-        transform.Translate(Vector2.right * amount * moveSpeed * Time.deltaTime);
-    }
+        if (currentState == PlayerState.WALKING)
+        {
+            // Check if the player is standing in an alleyway
+            playerCollider.OverlapCollider(contactFilter, colliderOverlaps);
+            foreach (Collider2D collider in colliderOverlaps)
+            {
+                if (collider.CompareTag("Alleyway"))
+                {
+                    Debug.Log("[PlayerController] Player is hiding");
 
-    public void Hide()
-    {
-        if (looting || arrested) return;
-        Color color = sr.color;
-        color.a = 0.5f;
-        sr.color = color;
-        cc.enabled = false;
-    }
+                    currentState = PlayerState.HIDING;
+                    spriteRenderer.color = hiddenColor;
+                    playerCollider.enabled = false;
+                }
+            }
+        }
+        else if (currentState == PlayerState.HIDING)
+        {
+            Debug.Log("[PlayerController] Player is coming out of hiding");
 
-    public void Unhide()
-    {
-        if (looting || arrested) return;
-        Color color = sr.color;
-        color.a = 1f;
-        sr.color = color;
-        cc.enabled = true;
+            spriteRenderer.color = Color.white;
+            playerCollider.enabled = true;
+            currentState = PlayerState.WALKING;
+        }
     }
 
     public void Arrest()
     {
-        arrested = true;
-        print("Player arrested");
-        cc.enabled = false;
+        currentState = PlayerState.ARRESTED;
+        playerCollider.enabled = false;
+        
+        Debug.Log("[PlayerController] Player has been arrested");
     }
 
     public void Steal()
     {
-        if (looting) return;
-        StartCoroutine(StealRoutine());
-    }
-    private IEnumerator StealRoutine()
+        if (currentState == PlayerState.WALKING)
         {
-        looting = true;
-        print("Trying to steal");
-        yield return new WaitForSeconds(stealDelayMs/1000);
-        cc.OverlapCollider(contact, peds);
-        foreach(Collider2D ped in peds){
-            if (ped.GetComponent<Pedestrian>() != null) ped.GetComponent<Pedestrian>().Loot();
+            StartCoroutine(StealRoutine());
         }
-        looting = false;
+    }
+
+    private IEnumerator StealRoutine()
+    {
+        Debug.Log("[PlayerController] Player is attempting to steal...");
+        currentState = PlayerState.STEALING;
+
+        yield return new WaitForSeconds(stealDelay);
+
+        playerCollider.OverlapCollider(contactFilter, colliderOverlaps);
+        foreach(Collider2D collider in colliderOverlaps)
+        {
+            if (collider.GetComponent<Pedestrian>() != null)
+            {
+                collider.GetComponent<Pedestrian>().Pickpocket();
+            }
+        }
+
+        currentState = PlayerState.WALKING;
     }
 }

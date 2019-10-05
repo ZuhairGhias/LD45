@@ -4,40 +4,44 @@ using UnityEngine;
 
 public class Police : MonoBehaviour
 {
-    public float moveSpeed;
+    [SerializeField] private bool arresting = false;
+    [SerializeField] private float moveSpeed = 6f;
 
-    private bool arresting = false;
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    private int direction = 1;
 
-    // Update is called once per frame
     void Update()
     {
-        Move(1);
+        Move();
     }
 
-    public void Move(float amount)
+    public void SetDirection(int newDirection)
     {
-        if (arresting) return;
-        transform.Translate(Vector2.right * amount * moveSpeed * Time.deltaTime);
+        direction = newDirection;
+    }
+
+    public void Move()
+    {
+        if (!arresting)
+        {
+            transform.Translate(Vector2.right * direction * moveSpeed * Time.deltaTime);
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
         PlayerController player = collision.gameObject.GetComponent<PlayerController>();
 
-        if (!arresting && player != null) Arrest(player);
+        if (!arresting && player != null)
+        {
+            Arrest(player);
+        }
     }
 
     private void Arrest(PlayerController player)
     {
+        Debug.Log("[Police] Arresting player");
 
-        print("Arresting player");
         player.Arrest();
         arresting = true;
-
     }
 }

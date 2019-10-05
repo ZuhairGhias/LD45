@@ -7,6 +7,8 @@ public class GameManager : MonoBehaviour
     public enum GameState { INPROGRESS, UPGRADING, GAMEOVER }
 
     [SerializeField] private SpawnSystem spawnSystem;
+    [SerializeField] private TimerUI timerUI;
+    [SerializeField] private float timeRemaining = 20f;
     [SerializeField] private Vector2 spawnIntervals;
     [SerializeField] private float policeSpawnChance = 0.25f;
 
@@ -18,6 +20,11 @@ public class GameManager : MonoBehaviour
         StartRound(currentRound);
     }
 
+    private void Update()
+    {
+        UpdateTimer();
+    }
+
     public void StartRound(int round)
     {
         StartCoroutine(SpawnNPCs());
@@ -27,11 +34,15 @@ public class GameManager : MonoBehaviour
     {
         if (success)
         {
+            Debug.Log("[GameManager] Round complete, upgrading phase");
+
             currentState = GameState.UPGRADING;
             currentRound++;
         }
         else
         {
+            Debug.Log("[GameManager] Game over, you lose");
+
             currentState = GameState.GAMEOVER;
         }
     }
@@ -58,6 +69,21 @@ public class GameManager : MonoBehaviour
             }
 
             yield return new WaitForSeconds(Random.Range(spawnIntervals.x, spawnIntervals.y));
+        }
+    }
+
+    private void UpdateTimer()
+    {
+        if (currentState == GameState.INPROGRESS)
+        {
+            timeRemaining -= Time.deltaTime;
+
+            if (timeRemaining <= 0f)
+            {
+                currentState = GameState.UPGRADING;
+            }
+
+            timerUI.UpdateTimer(timeRemaining);
         }
     }
 }

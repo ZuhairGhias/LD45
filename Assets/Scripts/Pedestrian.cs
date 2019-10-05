@@ -26,9 +26,14 @@ public class Pedestrian : MonoBehaviour
 
     public int Pickpocket()
     {
-        Debug.Log("[Pedestrian] Pedestrian pickpocketed!");
+        if (!pickpocketed)
+        {
+            Debug.Log("[Pedestrian] Pedestrian pickpocketed!");
 
-        pickpocketed = true;
-        return Random.Range(1, 5);
+            pickpocketed = true;
+            return Random.Range(1, 5);
+        }
+
+        return 0;
     }
 }

@@ -10,7 +10,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float stealDelay = 1f;
     [SerializeField] private Color hiddenColor;
     [SerializeField] private ContactFilter2D contactFilter;
-
+    
+    private GameManager gameManager;
     private Rigidbody2D rigidBody;
     private Collider2D playerCollider;
     private SpriteRenderer spriteRenderer;
@@ -20,6 +21,8 @@ public class PlayerController : MonoBehaviour
 
     void Start()
     {
+        gameManager = FindObjectOfType<GameManager>();
+
         rigidBody = GetComponent<Rigidbody2D>();
         playerCollider = GetComponent<Collider2D>();
         spriteRenderer = GetComponent<SpriteRenderer>();
@@ -48,8 +51,11 @@ public class PlayerController : MonoBehaviour
                     Debug.Log("[PlayerController] Player is hiding");
 
                     currentState = PlayerState.HIDING;
+
+                    transform.position = transform.position + Vector3.up * 0.5f;
                     spriteRenderer.color = hiddenColor;
                     playerCollider.enabled = false;
+                    
                 }
             }
         }
@@ -57,8 +63,10 @@ public class PlayerController : MonoBehaviour
         {
             Debug.Log("[PlayerController] Player is coming out of hiding");
 
+            transform.position = transform.position + Vector3.down * 0.5f;
             spriteRenderer.color = Color.white;
             playerCollider.enabled = true;
+
             currentState = PlayerState.WALKING;
         }
     }
@@ -67,6 +75,8 @@ public class PlayerController : MonoBehaviour
     {
         currentState = PlayerState.ARRESTED;
         playerCollider.enabled = false;
+
+        gameManager.EndRound(false);
         
         Debug.Log("[PlayerController] Player has been arrested");
     }

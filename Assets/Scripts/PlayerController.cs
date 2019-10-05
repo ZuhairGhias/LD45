@@ -8,12 +8,13 @@ public class PlayerController : MonoBehaviour
     public float moveSpeed;
     public float stealDelayMs;
 
-    private bool looting;
-    private bool arrested = false;
+    public bool looting;
+    public bool arrested = false;
 
     private Rigidbody2D rb;
     private CircleCollider2D cc;
     private List<Collider2D> peds;
+    private SpriteRenderer sr;
     public ContactFilter2D contact;
 
 
@@ -23,6 +24,7 @@ public class PlayerController : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         cc = GetComponent<CircleCollider2D>();
+        sr = GetComponent<SpriteRenderer>();
         peds = new List<Collider2D>();
     }
 
@@ -34,14 +36,33 @@ public class PlayerController : MonoBehaviour
 
     public void Move(float amount)
     {
-        //rb.MovePosition(rb.position + (Vector2.right * amount * moveSpeed * Time.deltaTime));
         if (looting || arrested) return;
         transform.Translate(Vector2.right * amount * moveSpeed * Time.deltaTime);
     }
 
-    public void Arrest() {
-        print(arrested);
+    public void Hide()
+    {
+        if (looting || arrested) return;
+        Color color = sr.color;
+        color.a = 0.5f;
+        sr.color = color;
+        cc.enabled = false;
+    }
+
+    public void Unhide()
+    {
+        if (looting || arrested) return;
+        Color color = sr.color;
+        color.a = 1f;
+        sr.color = color;
+        cc.enabled = true;
+    }
+
+    public void Arrest()
+    {
         arrested = true;
+        print("Player arrested");
+        cc.enabled = false;
     }
 
     public void Steal()

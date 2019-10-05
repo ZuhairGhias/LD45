@@ -29,13 +29,15 @@ public class Police : MonoBehaviour
     {
         PlayerController player = collision.gameObject.GetComponent<PlayerController>();
 
-        if (player != null) Arrest(player);
+        if (!arresting && player != null) Arrest(player);
     }
 
     private void Arrest(PlayerController player)
     {
-        print("Arrest Player");
-        arresting = true;
+
+        print("Arresting player");
         player.Arrest();
+        arresting = true;
+
     }
 }

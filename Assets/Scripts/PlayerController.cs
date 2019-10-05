@@ -25,8 +25,8 @@ public class PlayerController : MonoBehaviour
 
     public void Move(float amount)
     {
-        print("Moving");
-        rb.MovePosition(rb.position + (Vector2.right * amount * moveSpeed * Time.deltaTime));
+        //rb.MovePosition(rb.position + (Vector2.right * amount * moveSpeed * Time.deltaTime));
+        transform.Translate(Vector2.right * amount * moveSpeed * Time.deltaTime);
     }
 
     public void Steal()

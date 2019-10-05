@@ -2,22 +2,22 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class InputController : MonoBehaviour
+public class DespawnPoint : MonoBehaviour
 {
-
-    private PlayerController pc;
-
     // Start is called before the first frame update
     void Start()
     {
-        pc = GetComponent<PlayerController>();
+        
     }
 
     // Update is called once per frame
     void Update()
     {
-        pc.Move(Input.GetAxis("Horizontal"));
+        
+    }
 
-        if(Input.GetKeyDown("e")) pc.Steal();
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        Destroy(collision.gameObject);
     }
 }

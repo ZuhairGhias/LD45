@@ -18,6 +18,8 @@ public class InputController : MonoBehaviour
     {
         pc.Move(Input.GetAxis("Horizontal"));
 
-        if(Input.GetKeyDown("e")) pc.Steal();
+        if (Input.GetKeyDown("e")) pc.Steal();
+        if (Input.GetKeyDown("space")) pc.Hide();
+        if (Input.GetKeyUp("space")) pc.Unhide();
     }
 }

@@ -54,7 +54,7 @@ public class CutsceneManager : MonoBehaviour
     private IEnumerator EndScene()
     {
         // Wait for the gunshot (adjust this as needed)
-        yield return new WaitForSeconds(1.5f);
+        yield return new WaitForSeconds(1.75f);
 
         // Play gunshot and show the UI
         dialogueManager.Unide(0f);

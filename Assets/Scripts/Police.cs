@@ -7,6 +7,7 @@ public class Police : MonoBehaviour
     [SerializeField] private Rigidbody2D rigidBody;
     [SerializeField] private Vector2 moveSpeedInterval;
     [SerializeField] private Animator animator;
+    [SerializeField] private SpriteRenderer sr;
 
     private float moveSpeed = 1f;
     private bool arresting = false;
@@ -27,7 +28,7 @@ public class Police : MonoBehaviour
         direction = newDirection;
         if(direction != 1)
         {
-            transform.localScale = new Vector3(-transform.localScale.x, transform.localScale.y, transform.localScale.z);
+            sr.flipX = true;
         }
         
     }
@@ -56,6 +57,14 @@ public class Police : MonoBehaviour
 
         player.Arrest();
         arresting = true;
+        if(player.transform.position.x > transform.position.x)
+        {
+            sr.flipX = false;
+        }
+        else
+        {
+            sr.flipX = true;
+        }
         animator.SetBool("isArresting", true);
     }
 }

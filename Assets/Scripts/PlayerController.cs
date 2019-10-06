@@ -147,6 +147,7 @@ public class PlayerController : MonoBehaviour
 
     public void Arrest()
     {
+        animator.SetFloat("walkSpeed", 0);
         currentState = PlayerState.ARRESTED;
         playerCollider.enabled = false;
 

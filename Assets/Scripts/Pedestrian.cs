@@ -21,7 +21,9 @@ public class Pedestrian : MonoBehaviour
     private void Start()
     {
         moveSpeed = UnityEngine.Random.Range(moveSpeedInterval.x, moveSpeedInterval.y);
-        animator.SetFloat("walkspeed", moveSpeed / 1.5f);
+
+        animator.Play("PedWalk" + UnityEngine.Random.Range(1, 5));
+        animator.SetFloat("walkspeed", moveSpeed / 3f);
     }
 
     void Update()

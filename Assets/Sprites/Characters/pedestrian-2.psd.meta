@@ -1,43 +1,43 @@
 fileFormatVersion: 2
-guid: a76ebe8fd3db18b4bb9929b1b56e0f71
+guid: 39ca99e16d358c7418b02ae2fa84e520
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 4008637102934986159
-    second: pedestrian-1_0
+      213: -6301442952698092043
+    second: pedestrian-2_0
   - first:
-      213: -1940015038077701400
-    second: pedestrian-1_1
+      213: 7780545407636981427
+    second: pedestrian-2_1
   - first:
-      213: -5798369878633792471
-    second: pedestrian-1_2
+      213: -6613171736808888574
+    second: pedestrian-2_2
   - first:
-      213: -3099039359920679405
-    second: pedestrian-1_3
+      213: -6712670520951664271
+    second: pedestrian-2_3
   - first:
-      213: 6220395854552808134
-    second: pedestrian-1_4
+      213: 8916606535147305156
+    second: pedestrian-2_4
   - first:
-      213: 2303889854359830704
-    second: pedestrian-1_5
+      213: 119653532657212845
+    second: pedestrian-2_5
   - first:
-      213: 2938905128105145333
-    second: pedestrian-1_6
+      213: -7923767770805686740
+    second: pedestrian-2_6
   - first:
-      213: 8910652895631455128
-    second: pedestrian-1_7
+      213: -236853194976215456
+    second: pedestrian-2_7
   - first:
-      213: -6745571649967213282
-    second: pedestrian-1_8
+      213: -989415521738021122
+    second: pedestrian-2_8
   - first:
-      213: 288284307210276227
-    second: pedestrian-1_9
+      213: -2998286697484307855
+    second: pedestrian-2_9
   - first:
-      213: -1778477499168218211
-    second: pedestrian-1_10
+      213: -7962723389357960689
+    second: pedestrian-2_10
   - first:
-      213: 7439931122618614489
-    second: pedestrian-1_11
+      213: 8790031193177330067
+    second: pedestrian-2_11
   externalObjects: {}
   serializedVersion: 10
   mipmaps:
@@ -118,23 +118,11 @@ TextureImporter:
     overridden: 1
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 3
-    buildTarget: WebGL
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: pedestrian-1_0
+      name: pedestrian-2_0
       rect:
         serializedVersion: 2
         x: 13
@@ -148,14 +136,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 544da91e2992e9344867651311111011
-      internalID: 4008637102934986159
+      spriteID: 827e71d55f25f8d47b085e2c4ca1f224
+      internalID: -6301442952698092043
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: pedestrian-1_1
+      name: pedestrian-2_1
       rect:
         serializedVersion: 2
         x: 76
@@ -169,20 +157,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c6a3256945a850c4787b3e42301de57b
-      internalID: -1940015038077701400
+      spriteID: 137e61fb53b91d748b2d0d2d78f499bc
+      internalID: 7780545407636981427
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: pedestrian-1_2
+      name: pedestrian-2_2
       rect:
         serializedVersion: 2
         x: 142
         y: 448
         width: 34
-        height: 64
+        height: 63
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -190,39 +178,18 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ef6fa0cc8e26fb34bafdedcacd48600f
-      internalID: -5798369878633792471
+      spriteID: d16738fe59bb68c4291c9db9c3ca79a9
+      internalID: -6613171736808888574
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: pedestrian-1_3
+      name: pedestrian-2_3
       rect:
         serializedVersion: 2
         x: 210
         y: 448
-        width: 23
-        height: 64
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 33a1d6129bfc44445852fed2f2dcde53
-      internalID: -3099039359920679405
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: pedestrian-1_4
-      rect:
-        serializedVersion: 2
-        x: 273
-        y: 449
         width: 23
         height: 63
       alignment: 0
@@ -232,19 +199,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5f99551b07434fa4b951b7b7a50c36d0
-      internalID: 6220395854552808134
+      spriteID: d37cc357cc67435448c16ce41b16ccac
+      internalID: -6712670520951664271
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: pedestrian-1_5
+      name: pedestrian-2_4
       rect:
         serializedVersion: 2
-        x: 337
-        y: 450
-        width: 30
+        x: 273
+        y: 449
+        width: 23
         height: 62
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -253,14 +220,35 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 430c1087c11815342841dc4ae3973146
-      internalID: 2303889854359830704
+      spriteID: 5508783ad831ec8448b293786f23e679
+      internalID: 8916606535147305156
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: pedestrian-1_6
+      name: pedestrian-2_5
+      rect:
+        serializedVersion: 2
+        x: 337
+        y: 450
+        width: 30
+        height: 61
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d12be295204cb9c4f8150f261ef79267
+      internalID: 119653532657212845
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pedestrian-2_6
       rect:
         serializedVersion: 2
         x: 397
@@ -274,14 +262,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1b900573010fd1a419061667b623c23b
-      internalID: 2938905128105145333
+      spriteID: d501c7a55cb53024b9a9e38df13fd7d9
+      internalID: -7923767770805686740
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: pedestrian-1_7
+      name: pedestrian-2_7
       rect:
         serializedVersion: 2
         x: 460
@@ -295,14 +283,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 164c37b285f4cd944aad31578efcd953
-      internalID: 8910652895631455128
+      spriteID: 317dbcf5611fe7f48bee23ba3bdd8c3a
+      internalID: -236853194976215456
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: pedestrian-1_8
+      name: pedestrian-2_8
       rect:
         serializedVersion: 2
         x: 17
@@ -316,20 +304,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0a7d1968d95c711418f55ef2161486f6
-      internalID: -6745571649967213282
+      spriteID: 17619818a9ba79d4292b892237e75ad5
+      internalID: -989415521738021122
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: pedestrian-1_9
+      name: pedestrian-2_9
       rect:
         serializedVersion: 2
         x: 84
         y: 384
         width: 20
-        height: 64
+        height: 62
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -337,20 +325,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 363bc9c99fb583d4cb469a3e361d73d3
-      internalID: 288284307210276227
+      spriteID: f0de76d23a0587d4dabf0ae7e2bacfb8
+      internalID: -2998286697484307855
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: pedestrian-1_10
+      name: pedestrian-2_10
       rect:
         serializedVersion: 2
         x: 147
         y: 384
         width: 23
-        height: 63
+        height: 62
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -358,14 +346,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 76e626bef876d2d4e990c86827bef312
-      internalID: -1778477499168218211
+      spriteID: f1bda2fb20cd3a143acf0f4be08009b0
+      internalID: -7962723389357960689
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: pedestrian-1_11
+      name: pedestrian-2_11
       rect:
         serializedVersion: 2
         x: 209
@@ -379,8 +367,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f199a742c514f634985dcf7b122a31e0
-      internalID: 7439931122618614489
+      spriteID: 68742d1f54c774b4aa69387d8fa1bb96
+      internalID: 8790031193177330067
       vertices: []
       indices: 
       edges: []

@@ -11,6 +11,8 @@ public class Pedestrian : MonoBehaviour
     [SerializeField] private Vector2 moveSpeedInterval;
     [SerializeField] private SpriteRenderer spriteRenderer;
     [SerializeField] private Color pickpocketedColor;
+    [SerializeField] private LootEffect lootEffect;
+    [SerializeField] private Animator animator;
 
     private float moveSpeed = 6f;
     private bool pickpocketed = false;
@@ -19,6 +21,7 @@ public class Pedestrian : MonoBehaviour
     private void Start()
     {
         moveSpeed = UnityEngine.Random.Range(moveSpeedInterval.x, moveSpeedInterval.y);
+        animator.SetFloat("walkspeed", moveSpeed / 1.5f);
     }
 
     void Update()
@@ -29,6 +32,14 @@ public class Pedestrian : MonoBehaviour
     public void SetDirection(int newDirection)
     {
         direction = newDirection;
+        if(direction == 1)
+        {
+            spriteRenderer.flipX = false;
+        }
+        else
+        {
+            spriteRenderer.flipX = true;
+        }
     }
 
     public void Move()
@@ -47,6 +58,9 @@ public class Pedestrian : MonoBehaviour
             pickpocketed = true;
 
             OnPickpocket(moneyStolen);
+
+            LootEffect effect = Instantiate(lootEffect, transform.position, Quaternion.identity);
+            effect.SetText("$" + moneyStolen);
 
             return moneyStolen;
         }

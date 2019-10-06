@@ -91,7 +91,7 @@ public class SpawnSystem : MonoBehaviour
             }
 
             // Randomize NPC type
-            float policeSpawnChance = Mathf.Clamp(basePoliceSpawnChance + gameManager.GetCurrentHeat(), 0f, maxPoliceSpawnChance);
+            float policeSpawnChance = Mathf.Clamp(basePoliceSpawnChance + gameManager.GetCurrentHeat() / 2f, 0f, maxPoliceSpawnChance);
             if (Random.Range(0f, 1f) <= policeSpawnChance)
             {
                 SpawnPolice(direction);

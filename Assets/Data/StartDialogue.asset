@@ -13,5 +13,7 @@ MonoBehaviour:
   m_Name: StartDialogue
   m_EditorClassIdentifier: 
   sentences:
-  - Hello Alex
-  - I want you to know that you are a doodoo brain and this game is epic
+  - New York City, 2035
+  - "Job automation has resulted in mass layoffs.    \n\nUnemployment rate is over
+    30%.   \n\nCrime is rampant."
+  - "You are the top 1%.               \n\nLife is good."

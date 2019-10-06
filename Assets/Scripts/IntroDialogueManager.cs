@@ -6,11 +6,11 @@ using UnityEngine.UI;
 
 public class IntroDialogueManager : MonoBehaviour
 {
-    [SerializeField] private CutsceneManager cm;
-    [SerializeField] private TextMeshProUGUI textbox;
-    [SerializeField] private TextMeshProUGUI continuebox;
+    [SerializeField] private CutsceneManager cutsceneManager;
+    [SerializeField] private TextMeshProUGUI textBox;
+    [SerializeField] private TextMeshProUGUI continueBox;
     [SerializeField] private Image background;
-    [SerializeField] private float delayMs;
+    [SerializeField] private float textTypeDelay = 0.01f;
     [SerializeField] private float continueDelay;
     
     private Dialogue dialogue;
@@ -19,63 +19,77 @@ public class IntroDialogueManager : MonoBehaviour
     
     void Start()
     {
-        textbox.text = "";
-        continuebox.enabled = false;
+        textBox.text = "";
+        continueBox.enabled = false;
     }
     
     void Update()
     {
-        if (Input.GetKeyDown("space") && continuebox.enabled) LoadNext();
+        if (Input.GetKeyDown("space") && continueBox.enabled)
+        {
+            LoadNext();
+        }
     }
 
-    public void LoadDialogue(Dialogue dialogue)
+    public void LoadDialogue(Dialogue newDialogue)
     {
-        this.dialogue = dialogue;
+        dialogue = newDialogue;
         dialogueNumber = 0;
+
         LoadNext();
     }
 
     public void LoadNext()
     {
-        continuebox.enabled = false;
-        if (smoothText != null) StopCoroutine(smoothText);
+        continueBox.enabled = false;
+
+        if (smoothText != null)
+        {
+            StopCoroutine(smoothText);
+        }
+
         if (dialogueNumber >= dialogue.sentences.Count)
         {
-            textbox.text = "";
+            textBox.text = "";
             Done();
             return;
         }
+
         smoothText = SmoothText(dialogue.sentences[dialogueNumber]);
         StartCoroutine(smoothText);
+
         dialogueNumber++;
     }
 
     public IEnumerator SmoothText(string text)
     {
         string newText = "";
+
         while (newText.Length < text.Length)
         {
             newText = text.Substring(0, newText.Length + 1);
-            textbox.text = newText;
-            yield return new WaitForSeconds(delayMs / 1000);
+            textBox.text = newText;
+
+            yield return new WaitForSeconds(textTypeDelay);
         }
 
         yield return new WaitForSeconds(continueDelay);
-        continuebox.enabled = true;
+
+        continueBox.enabled = true;
     }
 
     private void Done()
     {
-        cm.NextScene();
+        cutsceneManager.NextScene();
     }
 
-    public void Hide()
+    public void Hide(float duration)
     {
-        background.CrossFadeAlpha(0, 3, false);
+        background.CrossFadeAlpha(0, duration, false);
     }
 
-    public void Unide()
+    public void Unide(float duration)
     {
-        background.CrossFadeAlpha(1, 3, false);
+        background.CrossFadeAlpha(1, duration, false);
     }
 }

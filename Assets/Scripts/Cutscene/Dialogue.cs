@@ -5,5 +5,5 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "Dialogue", menuName = "Dialogue", order = 1)]
 public class Dialogue : ScriptableObject
 {
-    [SerializeField] public List<string> sentences;
+    [TextArea] public List<string> sentences;
 }

@@ -12,7 +12,7 @@ public class GameManager : MonoBehaviour
 
     [Header("Timer Settings")]
     [SerializeField] private TimerUI timerUI;
-    [SerializeField] private float timeRemaining = 20f;
+    [SerializeField] private float roundTimer = 20f;
 
     [Header("Heat Bar Settings")]
     [SerializeField] private HeatBarUI heatBarUI;
@@ -21,7 +21,8 @@ public class GameManager : MonoBehaviour
     [SerializeField] private float pickpocketHeat = 0.15f;
 
     private GameState currentState = GameState.PREPARING;
-    private int currentRound = 0;
+    private int currentRound = 1;
+    private float timeRemaining;
 
     private void Awake()
     {
@@ -47,8 +48,11 @@ public class GameManager : MonoBehaviour
     {
         if (currentState != GameState.INPROGRESS)
         {
+            Debug.Log("[GameManager] Starting round " + currentRound.ToString());
+
             currentState = GameState.INPROGRESS;
-            currentRound++;
+            timeRemaining = roundTimer;
+            shopCanvas.enabled = false;
 
             spawnSystem.StartSpawning();
             StartCoroutine(CooldownHeat());

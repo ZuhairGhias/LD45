@@ -5,7 +5,9 @@ using UnityEngine;
 public class CutscenePlayer : MonoBehaviour
 {
     public enum PlayerState { WAITING, ALIVE, DEAD }
-    
+
+    [SerializeField] private Animator animator;
+    [SerializeField] private SpriteRenderer spriteRenderer;
     [SerializeField] private float moveSpeed = 4f;
 
     private Rigidbody2D rigidBody;
@@ -26,6 +28,17 @@ public class CutscenePlayer : MonoBehaviour
         {
             direction = Input.GetAxis("Horizontal");
             rigidBody.MovePosition(new Vector2(transform.position.x, transform.position.y) + Vector2.right * direction * moveSpeed * Time.deltaTime);
+
+            if (direction > 0)
+            {
+                spriteRenderer.flipX = false;
+            }
+            else if (direction < 0)
+            {
+                spriteRenderer.flipX = true;
+            }
+
+            animator.SetFloat("walkSpeed", Mathf.Abs(direction));
         }
     }
 
@@ -37,5 +50,6 @@ public class CutscenePlayer : MonoBehaviour
     public void KillPlayer()
     {
         currentState = PlayerState.DEAD;
+        animator.SetFloat("walkSpeed", 0f);
     }
 }

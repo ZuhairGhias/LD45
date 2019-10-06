@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 4870651421949545568}
   m_Layer: 9
   m_Name: Pedestrian
-  m_TagString: Untagged
+  m_TagString: NPC
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -28,8 +28,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4870651421949545571}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.05, y: -1.83, z: -0.73046875}
-  m_LocalScale: {x: 2.94, y: 11.77, z: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 3, y: 8, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -72,8 +72,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
-  m_Color: {r: 0, g: 1, b: 0.16586065, a: 1}
+  m_Sprite: {fileID: 21300000, guid: 7b45943f5e78bd646b23a54f005744d6, type: 3}
+  m_Color: {r: 0, g: 0.6698113, b: 0.11032194, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -98,7 +98,7 @@ BoxCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
-    border: {x: 0.049999997, y: 0.049999997, z: 0.049999997, w: 0.049999997}
+    border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
     oldSize: {x: 0.16, y: 0.16}
     newSize: {x: 0.16, y: 0.16}
@@ -142,5 +142,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c1c976c9f87797d42860c9280e28e437, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  looted: 0
-  moveSpeed: 1
+  rigidBody: {fileID: 4870651421949545569}
+  moveSpeedInterval: {x: 2, y: 4}
+  spriteRenderer: {fileID: 4870651421949545583}
+  pickpocketedColor: {r: 0.041382253, g: 0.5, b: 0, a: 0.88235295}

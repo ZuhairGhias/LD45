@@ -4,20 +4,25 @@ using UnityEngine;
 
 public class InputController : MonoBehaviour
 {
-
-    private PlayerController pc;
-
-    // Start is called before the first frame update
+    private PlayerController controller;
+    
     void Start()
     {
-        pc = GetComponent<PlayerController>();
+        controller = GetComponent<PlayerController>();
     }
-
-    // Update is called once per frame
+    
     void Update()
     {
-        pc.Move(Input.GetAxis("Horizontal"));
+        controller.Move(Input.GetAxis("Horizontal"));
 
-        if(Input.GetKeyDown("e")) pc.Steal();
+        if (Input.GetKeyDown("e"))
+        {
+            controller.Steal();
+        }
+
+        if (Input.GetKeyDown("space"))
+        {
+            controller.ToggleHide();
+        }
     }
 }

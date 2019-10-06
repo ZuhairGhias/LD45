@@ -4,32 +4,104 @@ using UnityEngine;
 
 public class SpawnSystem : MonoBehaviour
 {
-    public int spawnRate;
-    public Pedestrian ped;
-    public Police pol;
-    public Transform SpawnPointLeft;
-    public Transform SpawnPointRight;
+    [SerializeField] private Pedestrian pedestrianPrefab;
+    [SerializeField] private Police policePrefab;
 
+    [SerializeField] private Transform spawnPointLeft;
+    [SerializeField] private Transform spawnPointRight;
+    
+    [SerializeField] private Vector2 spawnIntervals;
+    [SerializeField] private float basePoliceSpawnChance = 0f;
+    [SerializeField] private float maxPoliceSpawnChance = 0.35f;
+    
+    private GameManager gameManager;
+    private Coroutine spawnCoroutine;
 
-    // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
-        SpawnPolice();
+        gameManager = FindObjectOfType<GameManager>();
     }
 
-    // Update is called once per frame
-    void Update()
+    public void StartSpawning()
     {
-        
+        spawnCoroutine = StartCoroutine(SpawnNPCs());
     }
 
-    public void SpawnPolice()
+    public void StopSpawning()
     {
-        Instantiate(pol, SpawnPointLeft.transform.position, Quaternion.identity);
+        if (spawnCoroutine != null)
+        {
+            StopCoroutine(spawnCoroutine);
+        }
     }
 
-    public void SpawnPedestrian()
+    public void SpawnPolice(int direction)
     {
-        Instantiate(ped, SpawnPointLeft.transform.position, Quaternion.identity);
+        Police police;
+
+        switch (direction)
+        {
+            case -1:
+                police = Instantiate(policePrefab, spawnPointRight.position, Quaternion.identity);
+                police.SetDirection(direction);
+                break;
+
+            case 1:
+                police = Instantiate(policePrefab, spawnPointLeft.position, Quaternion.identity);
+                police.SetDirection(direction);
+                break;
+
+            default:
+                Debug.LogError("[SpawnSystem] Invalid direction input in SpawnPolice");
+                break;
+        }
+    }
+
+    public void SpawnPedestrian(int direction)
+    {
+        Pedestrian pedestrian;
+
+        switch (direction)
+        {
+            case -1:
+                pedestrian = Instantiate(pedestrianPrefab, spawnPointRight.position, Quaternion.identity);
+                pedestrian.SetDirection(direction);
+                break;
+
+            case 1:
+                pedestrian = Instantiate(pedestrianPrefab, spawnPointLeft.position, Quaternion.identity);
+                pedestrian.SetDirection(direction);
+                break;
+
+            default:
+                Debug.LogError("[SpawnSystem] Invalid direction input in SpawnPedestrian");
+                break;
+        }
+    }
+    
+    private IEnumerator SpawnNPCs()
+    {
+        while(true)
+        {
+            // Randomize movement direction
+            int direction = 1;
+            if (Random.Range(0f, 1f) < 0.5f)
+            {
+                direction = -1;
+            }
+
+            // Randomize NPC type
+            float policeSpawnChance = Mathf.Clamp(basePoliceSpawnChance + gameManager.GetCurrentHeat(), 0f, maxPoliceSpawnChance);
+            if (Random.Range(0f, 1f) <= policeSpawnChance)
+            {
+                SpawnPolice(direction);
+            }
+            else
+            {
+                SpawnPedestrian(direction);
+            }
+
+            yield return new WaitForSeconds(Random.Range(spawnIntervals.x, spawnIntervals.y));
+        }
     }
 }

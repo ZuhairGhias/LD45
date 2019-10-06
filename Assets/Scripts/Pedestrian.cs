@@ -1,33 +1,56 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class Pedestrian : MonoBehaviour
 {
-    public bool looted;
-    public float moveSpeed;
+    public static Action<int> OnPickpocket;
 
-    // Start is called before the first frame update
-    void Start()
+    [SerializeField] private Rigidbody2D rigidBody;
+    [SerializeField] private Vector2 moveSpeedInterval;
+    [SerializeField] private SpriteRenderer spriteRenderer;
+    [SerializeField] private Color pickpocketedColor;
+
+    private float moveSpeed = 6f;
+    private bool pickpocketed = false;
+    private int direction = 1;
+
+    private void Start()
     {
-        looted = false;
+        moveSpeed = UnityEngine.Random.Range(moveSpeedInterval.x, moveSpeedInterval.y);
     }
 
-    // Update is called once per frame
     void Update()
     {
-        Move(1);
+        Move();
     }
 
-    public int Loot()
+    public void SetDirection(int newDirection)
     {
-        looted = true;
-        print("ped looted");
-        return 10;
+        direction = newDirection;
     }
 
-    public void Move(float amount)
+    public void Move()
     {
-        transform.Translate(Vector2.right * amount * moveSpeed * Time.deltaTime);
+        rigidBody.MovePosition(new Vector2(transform.position.x, transform.position.y) + Vector2.right * direction * moveSpeed * Time.deltaTime);
+    }
+
+    public int Pickpocket(float multiplier)
+    {
+        if (!pickpocketed)
+        {
+            Debug.Log("[Pedestrian] Pedestrian pickpocketed!");
+
+            int moneyStolen = (int) (UnityEngine.Random.Range(1, 5) * multiplier);
+            spriteRenderer.color = pickpocketedColor;
+            pickpocketed = true;
+
+            OnPickpocket(moneyStolen);
+
+            return moneyStolen;
+        }
+
+        return 0;
     }
 }

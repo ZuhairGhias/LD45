@@ -4,20 +4,12 @@ using UnityEngine;
 
 public class DespawnPoint : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.gameObject.GetComponent<Pedestrian>() || collision.gameObject.GetComponent<Police>()) Destroy(collision.gameObject);
+        if (collision.gameObject.GetComponent<Pedestrian>() ||
+            collision.gameObject.GetComponent<Police>())
+        {
+            Destroy(collision.gameObject);
+        }
     }
 }

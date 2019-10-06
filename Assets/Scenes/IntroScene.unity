@@ -784,10 +784,11 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: '[space] to continue'
+  m_text: '[SPACE] to continue'
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 8847af6c076e7c54d8699b62e8286471, type: 2}
+  m_sharedMaterial: {fileID: 5830767104229083738, guid: 8847af6c076e7c54d8699b62e8286471,
+    type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -1023,8 +1024,9 @@ MonoBehaviour:
       m_Calls: []
   m_text: Put Dialogue here
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 8847af6c076e7c54d8699b62e8286471, type: 2}
+  m_sharedMaterial: {fileID: 5830767104229083738, guid: 8847af6c076e7c54d8699b62e8286471,
+    type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []

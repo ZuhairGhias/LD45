@@ -1694,7 +1694,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1033126011}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 11, y: -4.48, z: 0}
+  m_LocalPosition: {x: 11, y: -4.78, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1676787181}
@@ -2670,8 +2670,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spawnLeft: {fileID: 2013052344}
   spawnRight: {fileID: 1033126012}
-  spawnIntervals: {x: 1, y: 2}
-  speedInterval: {x: 10, y: 20}
+  spawnIntervals: {x: 3, y: 6}
+  speedInterval: {x: 10, y: 13}
   vehicles:
   - {fileID: 5347404833021356428, guid: 3c5037db46e6222478e8e0248988d7d7, type: 3}
   - {fileID: 8902220659653758183, guid: c73f717eee70a0044b01d04da5e59919, type: 3}
@@ -2841,7 +2841,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2013052343}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -11, y: -5.54, z: -1}
+  m_LocalPosition: {x: -11, y: -5.94, z: -1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1676787181}

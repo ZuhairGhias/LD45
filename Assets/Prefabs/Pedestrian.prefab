@@ -146,3 +146,5 @@ MonoBehaviour:
   moveSpeedInterval: {x: 2, y: 4}
   spriteRenderer: {fileID: 4870651421949545583}
   pickpocketedColor: {r: 0.041382253, g: 0.5, b: 0, a: 0.88235295}
+  lootEffect: {fileID: 753321980652352353, guid: 58f2a4b25d8d2b3469c41d918af4b71a,
+    type: 3}

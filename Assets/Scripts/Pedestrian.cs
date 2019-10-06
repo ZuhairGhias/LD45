@@ -11,6 +11,7 @@ public class Pedestrian : MonoBehaviour
     [SerializeField] private Vector2 moveSpeedInterval;
     [SerializeField] private SpriteRenderer spriteRenderer;
     [SerializeField] private Color pickpocketedColor;
+    [SerializeField] private LootEffect lootEffect;
 
     private float moveSpeed = 6f;
     private bool pickpocketed = false;
@@ -47,6 +48,9 @@ public class Pedestrian : MonoBehaviour
             pickpocketed = true;
 
             OnPickpocket(moneyStolen);
+
+            LootEffect effect = Instantiate(lootEffect, transform.position, Quaternion.identity);
+            effect.SetText("$" + moneyStolen);
 
             return moneyStolen;
         }

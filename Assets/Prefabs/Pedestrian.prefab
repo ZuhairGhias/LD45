@@ -73,7 +73,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 7b45943f5e78bd646b23a54f005744d6, type: 3}
+  m_Sprite: {fileID: 4008637102934986159, guid: a76ebe8fd3db18b4bb9929b1b56e0f71,
+    type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -101,7 +102,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.16, y: 0.16}
+    oldSize: {x: 0.4, y: 0.61}
     newSize: {x: 0.16, y: 0.16}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -144,11 +145,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rigidBody: {fileID: 4870651421949545569}
-  moveSpeedInterval: {x: 2, y: 4}
+  moveSpeedInterval: {x: 2, y: 3}
   spriteRenderer: {fileID: 4870651421949545583}
   pickpocketedColor: {r: 1, g: 1, b: 1, a: 0.54509807}
   lootEffect: {fileID: 753321980652352353, guid: 58f2a4b25d8d2b3469c41d918af4b71a,
     type: 3}
+  animator: {fileID: 7123026883706572768}
 --- !u!95 &7123026883706572768
 Animator:
   serializedVersion: 3

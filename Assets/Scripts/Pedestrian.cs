@@ -12,6 +12,7 @@ public class Pedestrian : MonoBehaviour
     [SerializeField] private SpriteRenderer spriteRenderer;
     [SerializeField] private Color pickpocketedColor;
     [SerializeField] private LootEffect lootEffect;
+    [SerializeField] private Animator animator;
 
     private float moveSpeed = 6f;
     private bool pickpocketed = false;
@@ -20,6 +21,7 @@ public class Pedestrian : MonoBehaviour
     private void Start()
     {
         moveSpeed = UnityEngine.Random.Range(moveSpeedInterval.x, moveSpeedInterval.y);
+        animator.SetFloat("walkspeed", moveSpeed / 1.5f);
     }
 
     void Update()

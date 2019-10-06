@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    public enum GameState { INPROGRESS, UPGRADING, GAMEOVER }
+    public enum GameState { PREPARING, INPROGRESS, UPGRADING, GAMEOVER }
 
     [Header("Game System")]
     [SerializeField] private SpawnSystem spawnSystem;
@@ -20,7 +20,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private float heatPassiveCooldown = 0.1f;
     [SerializeField] private float pickpocketHeat = 0.15f;
 
-    private GameState currentState = GameState.INPROGRESS;
+    private GameState currentState = GameState.PREPARING;
     private int currentRound = 0;
 
     private void Awake()

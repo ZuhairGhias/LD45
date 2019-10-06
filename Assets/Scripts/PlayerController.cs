@@ -7,11 +7,15 @@ public class PlayerController : MonoBehaviour
 {
     public enum PlayerState { WALKING, STEALING, HIDING, ARRESTED }
 
+    [Header("General Settings")]
     [SerializeField] private float moveSpeed = 10f;
     [SerializeField] private float stealDelay = 1f;
-    [SerializeField] private float hiddenCooldown = 5f;
-    [SerializeField] private Color hiddenColor;
     [SerializeField] private ContactFilter2D contactFilter;
+    
+    [Header("Hiding Settings")]
+    [SerializeField] private float hideMaxTime = 5f;
+    [SerializeField] private Color hiddenPlayerColor;
+    [SerializeField] private Canvas cooldownCanvas;
     [SerializeField] private Image cooldownBar;
 
     private GameManager gameManager;
@@ -19,7 +23,7 @@ public class PlayerController : MonoBehaviour
     private Collider2D playerCollider;
     private SpriteRenderer spriteRenderer;
     private List<Collider2D> colliderOverlaps;
-    private float currentCooldown;
+    private float currentHidingCooldown;
     private bool cooldownExpired = false;
     
     private PlayerState currentState = PlayerState.WALKING;
@@ -34,8 +38,9 @@ public class PlayerController : MonoBehaviour
 
         colliderOverlaps = new List<Collider2D>();
 
-        currentCooldown = hiddenCooldown;
+        currentHidingCooldown = hideMaxTime;
     }
+
     private void Update()
     {
         UpdateCooldown();
@@ -45,27 +50,33 @@ public class PlayerController : MonoBehaviour
     {
         if (currentState == PlayerState.HIDING)
         {
-            currentCooldown -= Time.deltaTime;
+            currentHidingCooldown -= Time.deltaTime;
         }
         else
         {
-            currentCooldown += Time.deltaTime;
+            currentHidingCooldown += Time.deltaTime;
         }
-        currentCooldown = Mathf.Clamp(currentCooldown, 0f, hiddenCooldown);
-        cooldownBar.fillAmount = currentCooldown / hiddenCooldown;
 
-        if (currentCooldown == 0)
+        currentHidingCooldown = Mathf.Clamp(currentHidingCooldown, 0f, hideMaxTime);
+        cooldownBar.fillAmount = currentHidingCooldown / hideMaxTime;
+
+        if (currentHidingCooldown == 0)
         {
-            cooldownExpired = true;
             ToggleHide();
+
+            cooldownExpired = true;
             cooldownBar.color = Color.red;
         }
-        else if (currentCooldown == hiddenCooldown)
+        else if (currentHidingCooldown == hideMaxTime)
         {
             cooldownExpired = false;
             cooldownBar.color = Color.white;
+            cooldownCanvas.enabled = false;
         }
-
+        else
+        {
+            cooldownCanvas.enabled = true;
+        }
     }
 
     public void Move(float direction)
@@ -91,7 +102,7 @@ public class PlayerController : MonoBehaviour
                     currentState = PlayerState.HIDING;
 
                     transform.position = transform.position + Vector3.up * 0.5f;
-                    spriteRenderer.color = hiddenColor;
+                    spriteRenderer.color = hiddenPlayerColor;
                     playerCollider.enabled = false;
                     
                 }

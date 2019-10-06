@@ -45,10 +45,14 @@ public class GameManager : MonoBehaviour
 
     public void StartRound()
     {
-        currentRound++;
+        if (currentState != GameState.INPROGRESS)
+        {
+            currentState = GameState.INPROGRESS;
+            currentRound++;
 
-        spawnSystem.StartSpawning();
-        StartCoroutine(CooldownHeat());
+            spawnSystem.StartSpawning();
+            StartCoroutine(CooldownHeat());
+        }
     }
 
     public void EndRound(bool success)

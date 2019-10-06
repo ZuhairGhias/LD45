@@ -12,6 +12,7 @@ public class SpawnSystem : MonoBehaviour
     
     [SerializeField] private Vector2 spawnIntervals;
     [SerializeField] private float basePoliceSpawnChance = 0f;
+    [SerializeField] private float maxPoliceSpawnChance = 0.35f;
     
     private GameManager gameManager;
     private Coroutine spawnCoroutine;
@@ -90,7 +91,8 @@ public class SpawnSystem : MonoBehaviour
             }
 
             // Randomize NPC type
-            if (Random.Range(0f, 1f) <= basePoliceSpawnChance + gameManager.GetCurrentHeat())
+            float policeSpawnChance = Mathf.Clamp(basePoliceSpawnChance + gameManager.GetCurrentHeat(), 0f, maxPoliceSpawnChance);
+            if (Random.Range(0f, 1f) <= policeSpawnChance)
             {
                 SpawnPolice(direction);
             }

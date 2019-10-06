@@ -71,7 +71,17 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: 0f0611fe2a10ed646a876f314ff9fafc,
+      objectReference: {fileID: 21300000, guid: a7e5d0db47cd66a40a752264af16ca4b,
         type: 3}
+    - target: {fileID: 5347404834338733681, guid: 3c5037db46e6222478e8e0248988d7d7,
+        type: 3}
+      propertyPath: m_Size.y
+      value: 1.17
+      objectReference: {fileID: 0}
+    - target: {fileID: 5347404834338733678, guid: 3c5037db46e6222478e8e0248988d7d7,
+        type: 3}
+      propertyPath: m_Name
+      value: sedan
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3c5037db46e6222478e8e0248988d7d7, type: 3}

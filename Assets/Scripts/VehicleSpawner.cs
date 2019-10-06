@@ -10,20 +10,14 @@ public class VehicleSpawner : MonoBehaviour
     [SerializeField] private Vector2 spawnIntervals;
     [SerializeField] private Vector2 speedInterval;
     [SerializeField] private List<Vehicle> vehicles;
-
-    // Start is called before the first frame update
+    
     void Start()
     {
         StartCoroutine(VehicleSpawnRoutine());
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     private IEnumerator VehicleSpawnRoutine() {
+
         while (true)
         {
             yield return new WaitForSeconds(Random.Range(spawnIntervals.x, spawnIntervals.y));
@@ -39,9 +33,6 @@ public class VehicleSpawner : MonoBehaviour
                 Vehicle car = Instantiate(vehicle, spawnRight.position, Quaternion.identity);
                 car.SetDirection(-Random.Range(speedInterval.x, speedInterval.y));
             }
-
         }
-        
-
     }
 }

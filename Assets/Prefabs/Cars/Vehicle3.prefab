@@ -76,7 +76,22 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: 68f0f221c179c0e48b1cd6bb35527615,
+      objectReference: {fileID: 21300000, guid: 21598e5afe5d82d4eb921e8b248b99aa,
         type: 3}
+    - target: {fileID: 5347404834338733681, guid: 3c5037db46e6222478e8e0248988d7d7,
+        type: 3}
+      propertyPath: m_Size.x
+      value: 2.94
+      objectReference: {fileID: 0}
+    - target: {fileID: 5347404834338733681, guid: 3c5037db46e6222478e8e0248988d7d7,
+        type: 3}
+      propertyPath: m_Size.y
+      value: 1.44
+      objectReference: {fileID: 0}
+    - target: {fileID: 5347404834338733678, guid: 3c5037db46e6222478e8e0248988d7d7,
+        type: 3}
+      propertyPath: m_Name
+      value: camper
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3c5037db46e6222478e8e0248988d7d7, type: 3}

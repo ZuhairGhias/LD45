@@ -8,6 +8,7 @@ public class GameManager : MonoBehaviour
 
     [Header("Game System")]
     [SerializeField] private SpawnSystem spawnSystem;
+    [SerializeField] private Canvas shopCanvas;
 
     [Header("Timer Settings")]
     [SerializeField] private TimerUI timerUI;
@@ -19,9 +20,6 @@ public class GameManager : MonoBehaviour
     [SerializeField] private float heatPassiveCooldown = 0.1f;
     [SerializeField] private float pickpocketHeat = 0.15f;
 
-    [Header("Shop System")]
-    [SerializeField] private int money = 0;
-
     private GameState currentState = GameState.INPROGRESS;
     private int currentRound = 0;
 
@@ -32,7 +30,7 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
-        StartRound(currentRound);
+        StartRound();
     }
 
     private void Update()
@@ -45,8 +43,10 @@ public class GameManager : MonoBehaviour
         return currentHeat;
     }
 
-    public void StartRound(int round)
+    public void StartRound()
     {
+        currentRound++;
+
         spawnSystem.StartSpawning();
         StartCoroutine(CooldownHeat());
     }
@@ -59,6 +59,7 @@ public class GameManager : MonoBehaviour
         {
             Debug.Log("[GameManager] Round complete, upgrading phase");
 
+            shopCanvas.enabled = true;
             currentState = GameState.UPGRADING;
             currentRound++;
         }
@@ -76,7 +77,7 @@ public class GameManager : MonoBehaviour
 
         if (moneyStolen > 0)
         {
-            money += moneyStolen;
+            Inventory.Money += moneyStolen;
             AdjustHeat(pickpocketHeat);
         }
     }

@@ -6,26 +6,23 @@ using UnityEngine.UI;
 
 public class IntroDialogueManager : MonoBehaviour
 {
-
     [SerializeField] private CutsceneManager cm;
-
-    private Dialogue dialogue;
     [SerializeField] private TextMeshProUGUI textbox;
     [SerializeField] private TextMeshProUGUI continuebox;
     [SerializeField] private Image background;
-    private int dialogueNumber;
-    private IEnumerator smoothText;
     [SerializeField] private float delayMs;
     [SerializeField] private float continueDelay;
-
-    // Start is called before the first frame update
+    
+    private Dialogue dialogue;
+    private int dialogueNumber;
+    private IEnumerator smoothText;
+    
     void Start()
     {
         textbox.text = "";
         continuebox.enabled = false;
     }
-
-    // Update is called once per frame
+    
     void Update()
     {
         if (Input.GetKeyDown("space") && continuebox.enabled) LoadNext();
@@ -62,10 +59,9 @@ public class IntroDialogueManager : MonoBehaviour
             textbox.text = newText;
             yield return new WaitForSeconds(delayMs / 1000);
         }
+
         yield return new WaitForSeconds(continueDelay);
         continuebox.enabled = true;
-        
-
     }
 
     private void Done()

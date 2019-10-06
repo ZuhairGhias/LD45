@@ -10,17 +10,10 @@ public class CutsceneManager : MonoBehaviour
 
     private enum IntroState { STARTSCENE, MAINSCENE, ENDSCENE }
     private IntroState state = IntroState.STARTSCENE;
-
-    // Start is called before the first frame update
+    
     void Start()
     {
         StartCoroutine(StartScene());
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 
     private IEnumerator StartScene()
@@ -32,7 +25,6 @@ public class CutsceneManager : MonoBehaviour
 
     public void NextScene()
     {
-
         switch (state)
         {
             case IntroState.STARTSCENE:

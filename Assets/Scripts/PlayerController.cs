@@ -18,6 +18,9 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private Canvas cooldownCanvas;
     [SerializeField] private Image cooldownBar;
 
+    [Header("Animator Settings")]
+    [SerializeField] Animator animator;
+    [SerializeField] SpriteRenderer sr;
     private GameManager gameManager;
     private Rigidbody2D rigidBody;
     private Collider2D playerCollider;
@@ -49,6 +52,8 @@ public class PlayerController : MonoBehaviour
         colliderOverlaps = new List<Collider2D>();
 
         currentHidingCooldown = hideMaxTime;
+
+        animator.SetFloat("stealTime", 1/stealDelay);
     }
 
     private void Update()
@@ -94,6 +99,15 @@ public class PlayerController : MonoBehaviour
         if (currentState == PlayerState.WALKING)
         {
             rigidBody.MovePosition(new Vector2(transform.position.x, transform.position.y) + Vector2.right * direction * moveSpeed * moveSpeedMultiplier* Time.deltaTime);
+            if(direction > 0)
+            {
+                sr.flipX = false;
+            }
+            else if(direction < 0)
+            {
+                sr.flipX = true;
+            }
+            animator.SetFloat("walkSpeed", Mathf.Abs(direction));
         }
     }
 
@@ -117,6 +131,7 @@ public class PlayerController : MonoBehaviour
                     
                 }
             }
+            animator.SetFloat("walkSpeed", 0);
         }
         else if (currentState == PlayerState.HIDING)
         {
@@ -152,6 +167,7 @@ public class PlayerController : MonoBehaviour
     {
         Debug.Log("[PlayerController] Player is attempting to steal...");
         currentState = PlayerState.STEALING;
+        animator.SetBool("isStealing", true);
 
         yield return new WaitForSeconds(stealDelay * stealDelayMultiplier);
 
@@ -164,5 +180,7 @@ public class PlayerController : MonoBehaviour
             }
         }
         if (currentState == PlayerState.STEALING) currentState = PlayerState.WALKING;
+        animator.SetBool("isStealing", false);
+        
     }
 }

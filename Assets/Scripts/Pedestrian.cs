@@ -30,6 +30,14 @@ public class Pedestrian : MonoBehaviour
     public void SetDirection(int newDirection)
     {
         direction = newDirection;
+        if(direction == 1)
+        {
+            spriteRenderer.flipX = false;
+        }
+        else
+        {
+            spriteRenderer.flipX = true;
+        }
     }
 
     public void Move()

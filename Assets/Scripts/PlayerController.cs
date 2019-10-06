@@ -25,11 +25,21 @@ public class PlayerController : MonoBehaviour
     private List<Collider2D> colliderOverlaps;
     private float currentHidingCooldown;
     private bool cooldownExpired = false;
-    
+
+    [HideInInspector] public float stealAmountMultiplier { get; set;}
+
+    [HideInInspector] public float stealDelayMultiplier { get; set; }
+
+    [HideInInspector] public float moveSpeedMultiplier { get; set; }
+
     private PlayerState currentState = PlayerState.WALKING;
 
     void Start()
     {
+        stealAmountMultiplier = 1;
+        stealDelayMultiplier = 1;
+        moveSpeedMultiplier = 1;
+
         gameManager = FindObjectOfType<GameManager>();
 
         rigidBody = GetComponent<Rigidbody2D>();
@@ -83,7 +93,7 @@ public class PlayerController : MonoBehaviour
     {
         if (currentState == PlayerState.WALKING)
         {
-            rigidBody.MovePosition(new Vector2(transform.position.x, transform.position.y) + Vector2.right * direction * moveSpeed * Time.deltaTime);
+            rigidBody.MovePosition(new Vector2(transform.position.x, transform.position.y) + Vector2.right * direction * moveSpeed * moveSpeedMultiplier* Time.deltaTime);
         }
     }
 
@@ -143,14 +153,14 @@ public class PlayerController : MonoBehaviour
         Debug.Log("[PlayerController] Player is attempting to steal...");
         currentState = PlayerState.STEALING;
 
-        yield return new WaitForSeconds(stealDelay);
+        yield return new WaitForSeconds(stealDelay * stealDelayMultiplier);
 
         playerCollider.OverlapCollider(contactFilter, colliderOverlaps);
         foreach(Collider2D collider in colliderOverlaps)
         {
             if (collider.GetComponent<Pedestrian>() != null)
             {
-                int moneyStolen = collider.GetComponent<Pedestrian>().Pickpocket();
+                int moneyStolen = collider.GetComponent<Pedestrian>().Pickpocket(stealAmountMultiplier);
             }
         }
         if (currentState == PlayerState.STEALING) currentState = PlayerState.WALKING;

@@ -9,6 +9,7 @@ public class GameManager : MonoBehaviour
     [Header("Game System")]
     [SerializeField] private SpawnSystem spawnSystem;
     [SerializeField] private Canvas shopCanvas;
+    [SerializeField] private DynamicSky dynamicSky;
 
     [Header("Timer Settings")]
     [SerializeField] private TimerUI timerUI;
@@ -19,6 +20,13 @@ public class GameManager : MonoBehaviour
     [SerializeField] private float currentHeat = 0f;
     [SerializeField] private float heatPassiveCooldown = 0.1f;
     [SerializeField] private float pickpocketHeat = 0.15f;
+
+    [Header("Upgrade Modifiers")]
+    [SerializeField] private float stealAmountMultiplier = 4f;
+
+    [SerializeField] private float stealDelayMultiplier = 0.75f;
+
+    [SerializeField] private float moveSpeedMultiplier = 1.25f;
 
     private GameState currentState = GameState.PREPARING;
     private int currentRound = 1;
@@ -56,6 +64,12 @@ public class GameManager : MonoBehaviour
 
             spawnSystem.StartSpawning();
             StartCoroutine(CooldownHeat());
+
+            PlayerController player = GameManager.FindObjectOfType<PlayerController>();
+            if (Inventory.HasBoots) player.moveSpeedMultiplier = moveSpeedMultiplier;
+            if (Inventory.HasGloves) player.stealDelayMultiplier = stealDelayMultiplier;
+            if (Inventory.HasGuide) player.stealAmountMultiplier = stealAmountMultiplier;
+
         }
     }
 
@@ -104,9 +118,11 @@ public class GameManager : MonoBehaviour
 
             if (timeRemaining <= 0f)
             {
-                EndRound(true);
+                spawnSystem.StopSpawning();
+                if(GameObject.FindGameObjectWithTag("NPC") == null) EndRound(true);
             }
-
+            timeRemaining = Mathf.Clamp(timeRemaining, 0f, Mathf.Infinity);
+            dynamicSky.UpdateSky(timeRemaining / roundTimer);
             timerUI.UpdateTimer(timeRemaining);
         }
     }

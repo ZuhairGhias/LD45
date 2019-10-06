@@ -36,13 +36,13 @@ public class Pedestrian : MonoBehaviour
         rigidBody.MovePosition(new Vector2(transform.position.x, transform.position.y) + Vector2.right * direction * moveSpeed * Time.deltaTime);
     }
 
-    public int Pickpocket()
+    public int Pickpocket(float multiplier)
     {
         if (!pickpocketed)
         {
             Debug.Log("[Pedestrian] Pedestrian pickpocketed!");
 
-            int moneyStolen = UnityEngine.Random.Range(1, 5);
+            int moneyStolen = (int) (UnityEngine.Random.Range(1, 5) * multiplier);
             spriteRenderer.color = pickpocketedColor;
             pickpocketed = true;
 

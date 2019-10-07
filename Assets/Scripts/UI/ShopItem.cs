@@ -15,12 +15,16 @@ public class ShopItem : MonoBehaviour
     [SerializeField] private string itemName;
     [SerializeField] private Sprite itemSprite;
     [SerializeField] private int itemCost;
+    [SerializeField] private string itemDescription;
+
+    private GameManager gm;
 
     private void Start()
     {
         itemNameText.text = itemName;
         itemImage.sprite = itemSprite;
         itemCostText.text = "$" + itemCost.ToString();
+        gm = FindObjectOfType<GameManager>();
     }
 
     public void BuyItem()
@@ -38,20 +42,20 @@ public class ShopItem : MonoBehaviour
                     Inventory.HasGloves = true;
                     break;
 
-                case "Badge":
+                case "Fake Badge":
                     Inventory.HasBadge = true;
                     break;
 
-                case "Newspaper":
-                    Inventory.HasNewspaper = true;
+                case "Hoodie":
+                    Inventory.HasHoodie = true;
                     break;
 
-                case "Guide":
+                case "Pickpocket Guide":
                     Inventory.HasGuide = true;
                     break;
 
-                case "Alcohol":
-                    Inventory.HasAlcohol = true;
+                case "Police Scanner":
+                    Inventory.HasScanner = true;
                     break;
 
                 case "Coffee":
@@ -60,6 +64,7 @@ public class ShopItem : MonoBehaviour
 
                 case "Revolver":
                     Inventory.HasRevolver = true;
+                    gm.RevolverBought();
                     break;
             }
 

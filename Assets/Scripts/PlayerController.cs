@@ -35,6 +35,8 @@ public class PlayerController : MonoBehaviour
 
     [HideInInspector] public float moveSpeedMultiplier { get; set; }
 
+    [HideInInspector] public float hideTimeMultiplier { get; set; }
+
     private PlayerState currentState = PlayerState.WALKING;
 
     void Start()
@@ -42,6 +44,7 @@ public class PlayerController : MonoBehaviour
         stealAmountMultiplier = 1;
         stealDelayMultiplier = 1;
         moveSpeedMultiplier = 1;
+        hideTimeMultiplier = 1;
 
         gameManager = FindObjectOfType<GameManager>();
 
@@ -63,6 +66,7 @@ public class PlayerController : MonoBehaviour
 
     private void UpdateCooldown()
     {
+
         if (currentState == PlayerState.HIDING)
         {
             currentHidingCooldown -= Time.deltaTime;
@@ -72,8 +76,8 @@ public class PlayerController : MonoBehaviour
             currentHidingCooldown += Time.deltaTime;
         }
 
-        currentHidingCooldown = Mathf.Clamp(currentHidingCooldown, 0f, hideMaxTime);
-        cooldownBar.fillAmount = currentHidingCooldown / hideMaxTime;
+        currentHidingCooldown = Mathf.Clamp(currentHidingCooldown, 0f, hideMaxTime * hideTimeMultiplier);
+        cooldownBar.fillAmount = currentHidingCooldown / (hideMaxTime * hideTimeMultiplier);
 
         if (currentHidingCooldown == 0)
         {
@@ -82,7 +86,7 @@ public class PlayerController : MonoBehaviour
             cooldownExpired = true;
             cooldownBar.color = Color.red;
         }
-        else if (currentHidingCooldown == hideMaxTime)
+        else if (currentHidingCooldown == hideMaxTime * hideTimeMultiplier)
         {
             cooldownExpired = false;
             cooldownBar.color = Color.white;

@@ -10,9 +10,22 @@ public class Inventory : MonoBehaviour
     public static bool HasBoots { get; set; }
     public static bool HasGloves { get; set; }
     public static bool HasBadge { get; set; }
-    public static bool HasNewspaper { get; set; }
+    public static bool HasHoodie { get; set; }
     public static bool HasGuide { get; set; }
-    public static bool HasAlcohol { get; set; }
+    public static bool HasScanner { get; set; }
     public static bool HasCoffee { get; set; }
     public static bool HasRevolver { get; set; }
+
+    public static void Reset()
+    {
+        Money = 0;
+        HasScanner = false;
+        HasBadge = false;
+        HasBoots = false;
+        HasCoffee = false;
+        HasGloves = false;
+        HasGuide = false;
+        HasHoodie = false;
+        HasRevolver = false;
+    }
 }

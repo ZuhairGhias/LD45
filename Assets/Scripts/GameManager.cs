@@ -22,14 +22,17 @@ public class GameManager : MonoBehaviour
     [SerializeField] private HeatBarUI heatBarUI;
     [SerializeField] private float currentHeat = 0f;
     [SerializeField] private float heatPassiveCooldown = 0.1f;
+    [SerializeField] private float heatCooldownModifier = 1.2f;
     [SerializeField] private float pickpocketHeat = 0.15f;
 
     [Header("Upgrade Modifiers")]
-    [SerializeField] private float stealAmountMultiplier = 4f;
+    [SerializeField] private float stealAmountMultiplier = 5.5f;
 
     [SerializeField] private float stealDelayMultiplier = 0.75f;
 
     [SerializeField] private float moveSpeedMultiplier = 1.25f;
+
+    [SerializeField] private float hideTimeMultiplier = 1.5f;
 
     [Header("Game Over Settings")]
     [SerializeField] private Image blackScreen;
@@ -51,15 +54,7 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
-        Inventory.Money = 0;
-        Inventory.HasAlcohol = false;
-        Inventory.HasBadge = false;
-        Inventory.HasBoots = false;
-        Inventory.HasCoffee = false;
-        Inventory.HasGloves = false;
-        Inventory.HasGuide = false;
-        Inventory.HasNewspaper = false;
-        Inventory.HasRevolver = false;
+        Inventory.Reset();
         
         StartRound();
     }
@@ -91,6 +86,7 @@ public class GameManager : MonoBehaviour
             if (Inventory.HasBoots) player.moveSpeedMultiplier = moveSpeedMultiplier;
             if (Inventory.HasGloves) player.stealDelayMultiplier = stealDelayMultiplier;
             if (Inventory.HasGuide) player.stealAmountMultiplier = stealAmountMultiplier;
+            if (Inventory.HasHoodie) player.hideTimeMultiplier = hideTimeMultiplier;
 
         }
     }
@@ -155,7 +151,9 @@ public class GameManager : MonoBehaviour
     {
         while (currentState == GameState.INPROGRESS)
         {
-            AdjustHeat(-heatPassiveCooldown * Time.deltaTime);
+            float multiplier = 1f;
+            if (Inventory.HasBadge) multiplier = heatCooldownModifier;
+            AdjustHeat(-heatPassiveCooldown * Time.deltaTime * heatCooldownModifier);
 
             yield return null;
         }
@@ -176,5 +174,10 @@ public class GameManager : MonoBehaviour
             if (Input.GetKeyDown("space")) SceneManager.LoadScene("GameScene");
             yield return null;
         }
+    }
+
+    public void RevolverBought()
+    {
+        SceneManager.LoadScene("IntroScene");
     }
 }

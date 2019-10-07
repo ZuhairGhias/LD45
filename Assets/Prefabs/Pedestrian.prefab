@@ -147,6 +147,7 @@ MonoBehaviour:
   rigidBody: {fileID: 4870651421949545569}
   moveSpeedInterval: {x: 2, y: 3}
   spriteRenderer: {fileID: 4870651421949545583}
+  pickPocketMoneyInterval: {x: 1, y: 11}
   pickpocketedColor: {r: 1, g: 1, b: 1, a: 0.54509807}
   lootEffect: {fileID: 753321980652352353, guid: 58f2a4b25d8d2b3469c41d918af4b71a,
     type: 3}

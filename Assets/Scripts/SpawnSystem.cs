@@ -11,8 +11,10 @@ public class SpawnSystem : MonoBehaviour
     [SerializeField] private Transform spawnPointRight;
     
     [SerializeField] private Vector2 spawnIntervals;
+    [SerializeField] private float spawnIntervalModifier = 0.75f;
     [SerializeField] private float basePoliceSpawnChance = 0f;
     [SerializeField] private float maxPoliceSpawnChance = 0.35f;
+    [SerializeField] private float policeChanceModifier = 0.75f;
     
     private GameManager gameManager;
     private Coroutine spawnCoroutine;
@@ -91,7 +93,10 @@ public class SpawnSystem : MonoBehaviour
             }
 
             // Randomize NPC type
-            float policeSpawnChance = Mathf.Clamp(basePoliceSpawnChance + gameManager.GetCurrentHeat() / 2f, 0f, maxPoliceSpawnChance);
+            //float policeSpawnChance = Mathf.Clamp(basePoliceSpawnChance + gameManager.GetCurrentHeat() / 2f, 0f, maxPoliceSpawnChance);
+            float spawnMultiplier = 1;
+            if (Inventory.HasScanner) spawnMultiplier = policeChanceModifier;
+            float policeSpawnChance = Mathf.Lerp(basePoliceSpawnChance, maxPoliceSpawnChance, gameManager.GetCurrentHeat()) * spawnMultiplier;
             if (Random.Range(0f, 1f) <= policeSpawnChance)
             {
                 SpawnPolice(direction);
@@ -101,7 +106,9 @@ public class SpawnSystem : MonoBehaviour
                 SpawnPedestrian(direction);
             }
 
-            yield return new WaitForSeconds(Random.Range(spawnIntervals.x, spawnIntervals.y));
+            float multiplier = 1;
+            if (Inventory.HasCoffee) multiplier = spawnIntervalModifier;
+            yield return new WaitForSeconds(Random.Range(spawnIntervals.x, spawnIntervals.y) * multiplier);
         }
     }
 }

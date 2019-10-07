@@ -10,6 +10,7 @@ public class Pedestrian : MonoBehaviour
     [SerializeField] private Rigidbody2D rigidBody;
     [SerializeField] private Vector2 moveSpeedInterval;
     [SerializeField] private SpriteRenderer spriteRenderer;
+    [SerializeField] private Vector2 pickPocketMoneyInterval;
     [SerializeField] private Color pickpocketedColor;
     [SerializeField] private LootEffect lootEffect;
     [SerializeField] private Animator animator;
@@ -55,7 +56,7 @@ public class Pedestrian : MonoBehaviour
         {
             Debug.Log("[Pedestrian] Pedestrian pickpocketed!");
 
-            int moneyStolen = (int) (UnityEngine.Random.Range(1, 5) * multiplier);
+            int moneyStolen = (int) (UnityEngine.Random.Range(pickPocketMoneyInterval.x, pickPocketMoneyInterval.y) * multiplier);
             spriteRenderer.color = pickpocketedColor;
             pickpocketed = true;
 

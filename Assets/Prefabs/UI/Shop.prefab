@@ -961,7 +961,7 @@ RectTransform:
   - {fileID: 203189221}
   - {fileID: 1266072743}
   m_Father: {fileID: 9009179297601540749}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -1346,7 +1346,7 @@ RectTransform:
   - {fileID: 810497842}
   - {fileID: 1772717580}
   m_Father: {fileID: 9009179297601540749}
-  m_RootOrder: 7
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -1462,7 +1462,7 @@ MonoBehaviour:
   purchaseAudio: {fileID: 4417163556297446316}
   itemName: Sign
   itemSprite: {fileID: 21300000, guid: 44a9bb761f67e4040a2ecf4e89783007, type: 3}
-  itemCost: 13
+  itemCost: 20
   itemDescription: Increases pedestrian traffic
   affordableTextColor: {r: 0, g: 0.6603774, b: 0.05601386, a: 1}
   unaffordableTextColor: {r: 0.7264151, g: 0, b: 0, a: 1}
@@ -1502,7 +1502,7 @@ RectTransform:
   - {fileID: 1346164239}
   - {fileID: 1248372702}
   m_Father: {fileID: 9009179297601540749}
-  m_RootOrder: 8
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -1618,7 +1618,7 @@ MonoBehaviour:
   purchaseAudio: {fileID: 4417163556297446316}
   itemName: Pickpocket Guide
   itemSprite: {fileID: 21300000, guid: be68784b89211a04a9ed71428b3b7ac7, type: 3}
-  itemCost: 50
+  itemCost: 85
   itemDescription: Increases pickpocket yield
   affordableTextColor: {r: 0, g: 0.6603774, b: 0.05601386, a: 1}
   unaffordableTextColor: {r: 0.7264151, g: 0, b: 0, a: 1}
@@ -2196,7 +2196,7 @@ RectTransform:
   m_Children:
   - {fileID: 2662884468286685900}
   m_Father: {fileID: 9009179297601540749}
-  m_RootOrder: 10
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -2474,7 +2474,7 @@ RectTransform:
   - {fileID: 990110202512436548}
   - {fileID: 7127303939889672838}
   m_Father: {fileID: 9009179297601540749}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -2590,7 +2590,7 @@ MonoBehaviour:
   purchaseAudio: {fileID: 4417163556297446316}
   itemName: Police Scanner
   itemSprite: {fileID: 21300000, guid: 74b18e2c2a6734f47991fcbd1e17b466, type: 3}
-  itemCost: 35
+  itemCost: 20
   itemDescription: Decreases police presence
   affordableTextColor: {r: 0, g: 0.6603774, b: 0.05601386, a: 1}
   unaffordableTextColor: {r: 0.7264151, g: 0, b: 0, a: 1}
@@ -2704,7 +2704,7 @@ RectTransform:
   - {fileID: 6980902453197461331}
   - {fileID: 8889447835766058269}
   m_Father: {fileID: 9009179297601540749}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -2820,11 +2820,84 @@ MonoBehaviour:
   purchaseAudio: {fileID: 4417163556297446316}
   itemName: Gloves
   itemSprite: {fileID: 21300000, guid: c23934e16d3f22946aad00516107eca2, type: 3}
-  itemCost: 20
+  itemCost: 15
   itemDescription: Decreases pickpocket delay
   affordableTextColor: {r: 0, g: 0.6603774, b: 0.05601386, a: 1}
   unaffordableTextColor: {r: 0.7264151, g: 0, b: 0, a: 1}
   unaffordableItemColor: {r: 0.4528302, g: 0.4528302, b: 0.4528302, a: 1}
+--- !u!1 &5539046083014220291
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8254537571616300569}
+  - component: {fileID: 7242305546783509716}
+  - component: {fileID: 8953919508193591581}
+  m_Layer: 5
+  m_Name: Shelves
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &8254537571616300569
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5539046083014220291}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 9009179297601540749}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 1920, y: 1080}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!222 &7242305546783509716
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5539046083014220291}
+  m_CullTransparentMesh: 0
+--- !u!114 &8953919508193591581
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5539046083014220291}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 21300000, guid: 463898c6db08f6c48808411f01477513, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
 --- !u!1 &6092669379758245951
 GameObject:
   m_ObjectHideFlags: 0
@@ -3167,7 +3240,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 9009179297601540749}
-  m_RootOrder: 9
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
@@ -3328,7 +3401,7 @@ RectTransform:
   - {fileID: 5716158692206478125}
   - {fileID: 4651818820349823141}
   m_Father: {fileID: 9009179297601540749}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -4098,7 +4171,7 @@ RectTransform:
   - {fileID: 6967256805163100171}
   - {fileID: 4297044268549802278}
   m_Father: {fileID: 9009179297601540749}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -4214,7 +4287,7 @@ MonoBehaviour:
   purchaseAudio: {fileID: 4417163556297446316}
   itemName: Fake Badge
   itemSprite: {fileID: 21300000, guid: 7c445563e40ca7347ad8f72b9eed530c, type: 3}
-  itemCost: 50
+  itemCost: 30
   itemDescription: Increases cooldown rate for heat
   affordableTextColor: {r: 0, g: 0.6603774, b: 0.05601386, a: 1}
   unaffordableTextColor: {r: 0.7264151, g: 0, b: 0, a: 1}
@@ -4254,7 +4327,7 @@ RectTransform:
   - {fileID: 787328059565717618}
   - {fileID: 8865921262386189753}
   m_Father: {fileID: 9009179297601540749}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -4370,7 +4443,7 @@ MonoBehaviour:
   purchaseAudio: {fileID: 4417163556297446316}
   itemName: Boots
   itemSprite: {fileID: 21300000, guid: c2ba32903ddbecf409fd570003c3b518, type: 3}
-  itemCost: 25
+  itemCost: 20
   itemDescription: Increases movement speed
   affordableTextColor: {r: 0, g: 0.6603774, b: 0.05601386, a: 1}
   unaffordableTextColor: {r: 0.7264151, g: 0, b: 0, a: 1}
@@ -4407,10 +4480,10 @@ RectTransform:
   m_Father: {fileID: 9009179297601540749}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 1920, y: 1080}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &9009179297422392521
 CanvasRenderer:
@@ -4479,6 +4552,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 9009179297422392519}
+  - {fileID: 8254537571616300569}
   - {fileID: 7909563722766687180}
   - {fileID: 8176167816802189273}
   - {fileID: 2051430525513517677}

@@ -34,6 +34,6 @@ public class Vehicle : MonoBehaviour
 
     public void Move()
     {
-        rb.MovePosition(new Vector2(transform.position.x, transform.position.y) + Vector2.right * direction * Time.deltaTime);
+        rb.MovePosition(new Vector2(transform.position.x, transform.position.y) + Vector2.right * direction * Time.fixedDeltaTime);
     }
 }

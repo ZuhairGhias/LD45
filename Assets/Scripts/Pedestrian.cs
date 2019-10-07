@@ -22,7 +22,7 @@ public class Pedestrian : MonoBehaviour
         moveSpeed = UnityEngine.Random.Range(moveSpeedInterval.x, moveSpeedInterval.y);
 
         animator.Play("PedWalk" + UnityEngine.Random.Range(1, 5));
-        animator.SetFloat("walkspeed", moveSpeed / 3f);
+        animator.SetFloat("walkspeed", moveSpeed / 1.2f);
     }
 
     void Update()
@@ -45,7 +45,7 @@ public class Pedestrian : MonoBehaviour
 
     public void Move()
     {
-        rigidBody.MovePosition(new Vector2(transform.position.x, transform.position.y) + Vector2.right * direction * moveSpeed * Time.deltaTime);
+        rigidBody.MovePosition(new Vector2(transform.position.x, transform.position.y) + Vector2.right * direction * moveSpeed * Time.fixedDeltaTime);
     }
 
     public int Pickpocket(float multiplier)

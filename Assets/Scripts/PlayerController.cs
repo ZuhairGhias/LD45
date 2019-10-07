@@ -112,7 +112,7 @@ public class PlayerController : MonoBehaviour
     {
         if (currentState == PlayerState.WALKING)
         {
-            rigidBody.MovePosition(new Vector2(transform.position.x, transform.position.y) + Vector2.right * direction * moveSpeed * moveSpeedMultiplier* Time.deltaTime);
+            rigidBody.MovePosition(new Vector2(transform.position.x, transform.position.y) + Vector2.right * direction * moveSpeed * moveSpeedMultiplier* Time.fixedDeltaTime);
             if(direction > 0)
             {
                 sr.flipX = false;
@@ -121,7 +121,7 @@ public class PlayerController : MonoBehaviour
             {
                 sr.flipX = true;
             }
-            animator.SetFloat("walkSpeed", Mathf.Abs(direction));
+            animator.SetFloat("walkSpeed", Mathf.Abs(direction) * 1.5f);
         }
     }
 

@@ -27,7 +27,7 @@ public class CutscenePlayer : MonoBehaviour
         if (currentState == PlayerState.ALIVE)
         {
             direction = Input.GetAxis("Horizontal");
-            rigidBody.MovePosition(new Vector2(transform.position.x, transform.position.y) + Vector2.right * direction * moveSpeed * Time.deltaTime);
+            rigidBody.MovePosition(new Vector2(transform.position.x, transform.position.y) + Vector2.right * direction * moveSpeed * Time.fixedDeltaTime);
 
             if (direction > 0)
             {

@@ -2853,7 +2853,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animator: {fileID: 2846584299641226097}
   spriteRenderer: {fileID: 2846584299641226092}
-  moveSpeed: 2
+  moveSpeed: 1.5
 --- !u!95 &2846584299641226097
 Animator:
   serializedVersion: 3

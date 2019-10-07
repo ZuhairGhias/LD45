@@ -145,7 +145,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rigidBody: {fileID: 4870651421949545569}
-  moveSpeedInterval: {x: 2, y: 3}
+  moveSpeedInterval: {x: 1, y: 1.5}
   spriteRenderer: {fileID: 4870651421949545583}
   pickPocketMoneyInterval: {x: 5, y: 10}
   pickpocketedColor: {r: 0.5943396, g: 0.5943396, b: 0.5943396, a: 1}

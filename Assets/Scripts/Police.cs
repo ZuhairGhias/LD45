@@ -37,7 +37,7 @@ public class Police : MonoBehaviour
     {
         if (!arresting)
         {
-            rigidBody.MovePosition(new Vector2(transform.position.x, transform.position.y) + Vector2.right * direction * moveSpeed * Time.deltaTime);
+            rigidBody.MovePosition(new Vector2(transform.position.x, transform.position.y) + Vector2.right * direction * moveSpeed * Time.fixedDeltaTime);
         }
     }
 

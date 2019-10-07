@@ -3280,7 +3280,7 @@ MonoBehaviour:
   spawnLeft: {fileID: 2013052344}
   spawnRight: {fileID: 1033126012}
   spawnIntervals: {x: 5, y: 8}
-  speedInterval: {x: 10, y: 13}
+  speedInterval: {x: 7, y: 10}
   vehicles:
   - {fileID: 5347404833021356428, guid: 3c5037db46e6222478e8e0248988d7d7, type: 3}
   - {fileID: 8902220659653758183, guid: c73f717eee70a0044b01d04da5e59919, type: 3}
@@ -3654,6 +3654,11 @@ PrefabInstance:
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 772929327}
+    - target: {fileID: 1474385028435833495, guid: e13fe3378b1f26246a1f9bbab7c2ad94,
+        type: 3}
+      propertyPath: moveSpeed
+      value: 2.5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e13fe3378b1f26246a1f9bbab7c2ad94, type: 3}
 --- !u!1 &2073330648

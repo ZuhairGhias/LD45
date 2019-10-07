@@ -35,27 +35,22 @@ public class ShopItem : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 
         gm = FindObjectOfType<GameManager>();
 
-        StartCoroutine(UpdateItem());
     }
 
-    IEnumerator UpdateItem()
+    private void Update()
     {
-        while(true)
+        if (Inventory.Money >= itemCost)
         {
-            if (Inventory.Money >= itemCost)
-            {
-                itemImage.color = Color.white;
-                itemCostText.color = affordableTextColor;
-            }
-            else
-            {
-                itemImage.color = unaffordableItemColor;
-                itemCostText.color = unaffordableTextColor;
-            }
-            
-            yield return new WaitForSeconds(1f);
+            itemImage.color = Color.white;
+            itemCostText.color = affordableTextColor;
+        }
+        else
+        {
+            itemImage.color = unaffordableItemColor;
+            itemCostText.color = unaffordableTextColor;
         }
     }
+
     
     public void OnPointerEnter(PointerEventData eventData)
     {

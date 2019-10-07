@@ -10,6 +10,7 @@ public class Pedestrian : MonoBehaviour
     [SerializeField] private SpriteRenderer spriteRenderer;
     [SerializeField] private Vector2 pickPocketMoneyInterval;
     [SerializeField] private Color pickpocketedColor;
+    [SerializeField] private float pickPocketWalkspeedMultiplier = 1.5f;
     [SerializeField] private Animator animator;
 
     private float moveSpeed = 6f;
@@ -55,7 +56,7 @@ public class Pedestrian : MonoBehaviour
             spriteRenderer.color = pickpocketedColor;
             pickpocketed = true;
 
-            
+            moveSpeed *= pickPocketWalkspeedMultiplier;
 
             return moneyStolen;
         }

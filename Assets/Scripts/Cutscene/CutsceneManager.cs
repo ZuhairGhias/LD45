@@ -9,7 +9,9 @@ public class CutsceneManager : MonoBehaviour
     [SerializeField] private IntroDialogueManager dialogueManager;
     [SerializeField] private Dialogue startDialogue;
     [SerializeField] private Dialogue endDialogue;
-    
+    [SerializeField] private Dialogue restartDialogue;
+    [SerializeField] private Dialogue reendDialogue;
+
     [SerializeField] private CutscenePlayer player;
 
     [Header("Sounds")]
@@ -29,7 +31,15 @@ public class CutsceneManager : MonoBehaviour
     private IEnumerator StartScene()
     {
         yield return new WaitForSeconds(2);
-        dialogueManager.LoadDialogue(startDialogue);
+        if (GameManager.GameComplete)
+        {
+            dialogueManager.LoadDialogue(restartDialogue);
+        }
+        else
+        {
+            dialogueManager.LoadDialogue(startDialogue);
+        }
+        
     }
 
     public void NextScene()
@@ -76,6 +86,14 @@ public class CutsceneManager : MonoBehaviour
         
         yield return new WaitForSeconds(3);
 
-        dialogueManager.LoadDialogue(endDialogue);
+        if (GameManager.GameComplete)
+        {
+            dialogueManager.LoadDialogue(reendDialogue);
+        }
+        else
+        {
+            dialogueManager.LoadDialogue(endDialogue);
+        }
+        
     }
 }

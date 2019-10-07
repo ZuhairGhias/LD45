@@ -22,6 +22,7 @@ public class SpawnSystem : MonoBehaviour
 
     private void Start()
     {
+        StopAllCoroutines();
         gameManager = FindObjectOfType<GameManager>();
     }
 

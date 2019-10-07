@@ -9,6 +9,8 @@ public class GameManager : MonoBehaviour
 {
     public enum GameState { PREPARING, INPROGRESS, UPGRADING, GAMEOVER }
 
+    public static bool GameComplete = false;
+
     [Header("Game System")]
     [SerializeField] private SpawnSystem spawnSystem;
     [SerializeField] private Canvas shopCanvas;
@@ -52,11 +54,11 @@ public class GameManager : MonoBehaviour
 
     private void Awake()
     {
-        Pedestrian.OnPickpocket += StealMoney;
+        PlayerController.OnPickpocket += StealMoney;
     }
     private void OnDestroy()
     {
-        Pedestrian.OnPickpocket -= StealMoney;
+        PlayerController.OnPickpocket -= StealMoney;
     }
 
     private void Start()
@@ -188,8 +190,9 @@ public class GameManager : MonoBehaviour
             if (Input.GetKeyDown("space"))
             {
                 SceneManager.LoadScene("GameScene");
-                yield return null;
+                
             }
+            yield return null;
 
         }
         
@@ -197,6 +200,7 @@ public class GameManager : MonoBehaviour
 
     public void RevolverBought()
     {
+        GameComplete = true;
         SceneManager.LoadScene("IntroScene");
     }
 }

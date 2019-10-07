@@ -1,11 +1,9 @@
-﻿using System;
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class Pedestrian : MonoBehaviour
 {
-    public static Action<int> OnPickpocket;
 
     [SerializeField] private Rigidbody2D rigidBody;
     [SerializeField] private Vector2 moveSpeedInterval;
@@ -57,7 +55,7 @@ public class Pedestrian : MonoBehaviour
             spriteRenderer.color = pickpocketedColor;
             pickpocketed = true;
 
-            OnPickpocket(moneyStolen);
+            
 
             return moneyStolen;
         }

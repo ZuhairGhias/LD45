@@ -1,17 +1,24 @@
-﻿using System.Collections;
+﻿using System;
+using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
+
+    public static Action<int> OnPickpocket;
     public enum PlayerState { WALKING, STEALING, HIDING, ARRESTED }
 
     [Header("General Settings")]
     [SerializeField] private float moveSpeed = 10f;
     [SerializeField] private float stealDelay = 1f;
     [SerializeField] private ContactFilter2D contactFilter;
-    [SerializeField] private LootEffect lootEffect;
+    [SerializeField] private LootEffect lootEffect1;
+    [SerializeField] private LootEffect lootEffect2;
+
+
 
     [Header("Hiding Settings")]
     [SerializeField] private float hideMaxTime = 5f;
@@ -195,8 +202,17 @@ public class PlayerController : MonoBehaviour
 
         if (totalMoneyStolen > 0)
         {
-            LootEffect effect = Instantiate(lootEffect, transform.position, Quaternion.identity);
-            effect.SetText("$" + totalMoneyStolen);
+            if(pedestrianCount > 1)
+            {
+                LootEffect effect = Instantiate(lootEffect2, transform.position, Quaternion.identity);
+                effect.SetText("$" + totalMoneyStolen);
+            }
+            else
+            {
+                LootEffect effect = Instantiate(lootEffect1, transform.position, Quaternion.identity);
+                effect.SetText("$" + totalMoneyStolen);
+            }
+            
         }
 
         if (currentState == PlayerState.STEALING)
@@ -204,6 +220,7 @@ public class PlayerController : MonoBehaviour
             currentState = PlayerState.WALKING;
         }
 
+        OnPickpocket(totalMoneyStolen);
         animator.SetBool("isStealing", false);
     }
 }

@@ -54,6 +54,10 @@ public class GameManager : MonoBehaviour
     {
         Pedestrian.OnPickpocket += StealMoney;
     }
+    private void OnDestroy()
+    {
+        Pedestrian.OnPickpocket -= StealMoney;
+    }
 
     private void Start()
     {
@@ -184,10 +188,11 @@ public class GameManager : MonoBehaviour
             if (Input.GetKeyDown("space"))
             {
                 SceneManager.LoadScene("GameScene");
+                yield return null;
             }
 
-            yield return null;
         }
+        
     }
 
     public void RevolverBought()

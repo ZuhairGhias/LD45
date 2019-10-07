@@ -655,6 +655,8 @@ MonoBehaviour:
   dialogueManager: {fileID: 2140579012}
   startDialogue: {fileID: 11400000, guid: 9394f701447b67340beb77e07ecfb84b, type: 2}
   endDialogue: {fileID: 11400000, guid: c8ca8d2da582d5d43b97443fa2dec99b, type: 2}
+  restartDialogue: {fileID: 11400000, guid: 4c6d53845c03d5543b2edf411ea33414, type: 2}
+  reendDialogue: {fileID: 11400000, guid: 19e4c857a948d1b45ba4af9d5feb1a34, type: 2}
   player: {fileID: 2846584299641226096}
   audioSourceGlobal: {fileID: 556664999}
   audioSourceTV: {fileID: 523620250}

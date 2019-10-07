@@ -31,6 +31,7 @@ public class CutsceneManager : MonoBehaviour
     private IEnumerator StartScene()
     {
         yield return new WaitForSeconds(2);
+
         if (GameManager.GameComplete)
         {
             dialogueManager.LoadDialogue(restartDialogue);

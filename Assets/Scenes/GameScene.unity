@@ -4452,11 +4452,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Shop
       objectReference: {fileID: 0}
-    - target: {fileID: 9009179297601540748, guid: ab9f5f596f2e6e148b0bb7c8e39f0009,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 9009179297601540749, guid: ab9f5f596f2e6e148b0bb7c8e39f0009,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -4562,5 +4557,10 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 8467451631917719867, guid: ab9f5f596f2e6e148b0bb7c8e39f0009,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1216589567}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ab9f5f596f2e6e148b0bb7c8e39f0009, type: 3}

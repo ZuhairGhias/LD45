@@ -12,6 +12,8 @@ public class IntroDialogueManager : MonoBehaviour
     [SerializeField] private Image background;
     [SerializeField] private float textTypeDelay = 0.01f;
     [SerializeField] private float continueDelay;
+    [SerializeField] private AudioSource audioSource;
+    [SerializeField] private AudioClip typewriter;
     
     private Dialogue dialogue;
     private int dialogueNumber;
@@ -69,6 +71,11 @@ public class IntroDialogueManager : MonoBehaviour
         {
             newText = text.Substring(0, newText.Length + 1);
             textBox.text = newText;
+
+            if (newText[newText.Length - 1] != ' ')
+            {
+                audioSource.PlayOneShot(typewriter);
+            }
 
             yield return new WaitForSeconds(textTypeDelay);
         }

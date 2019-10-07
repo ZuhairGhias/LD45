@@ -109,7 +109,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.037, y: 0.363}
+  m_AnchoredPosition: {x: 0, y: 0.35}
   m_SizeDelta: {x: 0.25, y: 0.02}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!223 &783330656
@@ -330,7 +330,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 866ed1fa8f5bdd741bc7c78fa776b6f1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 8
+  moveSpeed: 6
   stealDelay: 1
   contactFilter:
     useTriggers: 1
@@ -346,8 +346,10 @@ MonoBehaviour:
     maxDepth: 0
     minNormalAngle: 0
     maxNormalAngle: 0
+  lootEffect: {fileID: 753321980652352353, guid: 58f2a4b25d8d2b3469c41d918af4b71a,
+    type: 3}
   hideMaxTime: 5
-  hiddenPlayerColor: {r: 0, g: 0, b: 0, a: 0}
+  hiddenPlayerColor: {r: 0.16981131, g: 0.16981131, b: 0.16981131, a: 0.88235295}
   cooldownCanvas: {fileID: 783330656}
   cooldownBar: {fileID: 111879589}
   animator: {fileID: 6000055942706053402}

@@ -10,6 +10,7 @@ public class VehicleSpawner : MonoBehaviour
     [SerializeField] private Vector2 spawnIntervals;
     [SerializeField] private Vector2 speedInterval;
     [SerializeField] private List<Vehicle> vehicles;
+    [SerializeField] private Transform vehicleParent;
     
     void Start()
     {
@@ -23,15 +24,18 @@ public class VehicleSpawner : MonoBehaviour
             yield return new WaitForSeconds(Random.Range(spawnIntervals.x, spawnIntervals.y));
 
             Vehicle vehicle = vehicles[Random.Range(0, vehicles.Count)];
+
             if (Random.Range(0f, 1f) < 0.5f)
             {
                 Vehicle car = Instantiate(vehicle, spawnLeft.position, Quaternion.identity);
                 car.SetDirection(Random.Range(speedInterval.x, speedInterval.y));
+                car.transform.SetParent(vehicleParent);
             }
             else
             {
                 Vehicle car = Instantiate(vehicle, spawnRight.position, Quaternion.identity);
                 car.SetDirection(-Random.Range(speedInterval.x, speedInterval.y));
+                car.transform.SetParent(vehicleParent);
             }
         }
     }

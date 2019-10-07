@@ -39,13 +39,16 @@ public class GameManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI continuePrompt;
     [SerializeField] private float blackoutDelay;
     [SerializeField] private float continueDelay;
+    [SerializeField] private AudioSource soundtrackSource;
     [SerializeField] private AudioSource audioSource;
-    [SerializeField] private AudioClip gun_reload;
-    [SerializeField] private AudioClip gun_shot;
+    [SerializeField] private AudioClip goteem;
+    [SerializeField] private AudioClip gunReload;
+    [SerializeField] private AudioClip gunshot;
 
     private GameState currentState = GameState.PREPARING;
     private int currentRound = 1;
     private float timeRemaining;
+    PlayerController player;
 
     private void Awake()
     {
@@ -54,6 +57,8 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
+        player = FindObjectOfType<PlayerController>();
+
         Inventory.Reset();
         
         StartRound();
@@ -78,16 +83,15 @@ public class GameManager : MonoBehaviour
             currentState = GameState.INPROGRESS;
             timeRemaining = roundTimer;
             shopCanvas.gameObject.SetActive(false);
+            currentHeat = 0f;
 
             spawnSystem.StartSpawning();
             StartCoroutine(CooldownHeat());
 
-            PlayerController player = GameManager.FindObjectOfType<PlayerController>();
             if (Inventory.HasBoots) player.moveSpeedMultiplier = moveSpeedMultiplier;
             if (Inventory.HasGloves) player.stealDelayMultiplier = stealDelayMultiplier;
             if (Inventory.HasGuide) player.stealAmountMultiplier = stealAmountMultiplier;
             if (Inventory.HasHoodie) player.hideTimeMultiplier = hideTimeMultiplier;
-
         }
     }
 
@@ -97,26 +101,19 @@ public class GameManager : MonoBehaviour
 
         if (success)
         {
-            Debug.Log("[GameManager] Round complete, upgrading phase");
-
             shopCanvas.gameObject.SetActive(true);
             currentState = GameState.UPGRADING;
             currentRound++;
         }
         else
         {
-            Debug.Log("[GameManager] Game over, you lose");
-
             currentState = GameState.GAMEOVER;
             StartCoroutine(GameOverRoutine());
-
         }
     }
 
     private void StealMoney(int moneyStolen)
     {
-        Debug.Log("[GameManager] $" + moneyStolen + " stolen!");
-
         if (moneyStolen > 0)
         {
             Inventory.Money += moneyStolen;
@@ -139,8 +136,16 @@ public class GameManager : MonoBehaviour
             if (timeRemaining <= 0f)
             {
                 spawnSystem.StopSpawning();
-                if(GameObject.FindGameObjectWithTag("NPC") == null) EndRound(true);
+
+                // FindGameObjectWithTag is very spooky when in the Update method so let's avoid it in the future
+                // if(GameObject.FindGameObjectWithTag("NPC") == null) EndRound(true);
+
+                if (!spawnSystem.HasNPCs())
+                {
+                    EndRound(true);
+                }
             }
+
             timeRemaining = Mathf.Clamp(timeRemaining, 0f, Mathf.Infinity);
             dynamicSky.UpdateSky(timeRemaining / roundTimer);
             timerUI.UpdateTimer(timeRemaining);
@@ -161,17 +166,28 @@ public class GameManager : MonoBehaviour
 
     private IEnumerator GameOverRoutine()
     {
-        audioSource.clip = gun_reload;
+        audioSource.clip = gunReload;
         audioSource.Play();
+
+        audioSource.PlayOneShot(goteem);
+
         yield return new WaitForSeconds(blackoutDelay);
+
         blackScreen.gameObject.SetActive(true);
-        audioSource.clip = gun_shot;
+        audioSource.clip = gunshot;
         audioSource.Play();
+        soundtrackSource.Stop();
+
         yield return new WaitForSeconds(continueDelay);
+
         continuePrompt.gameObject.SetActive(true);
         while (true)
         {
-            if (Input.GetKeyDown("space")) SceneManager.LoadScene("GameScene");
+            if (Input.GetKeyDown("space"))
+            {
+                SceneManager.LoadScene("GameScene");
+            }
+
             yield return null;
         }
     }

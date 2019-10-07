@@ -145,7 +145,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rigidBody: {fileID: 4870651421949545569}
-  moveSpeedInterval: {x: 3, y: 5}
+  moveSpeedInterval: {x: 4, y: 6}
   animator: {fileID: -7579823651466700688}
   sr: {fileID: 4870651421949545583}
 --- !u!95 &-7579823651466700688

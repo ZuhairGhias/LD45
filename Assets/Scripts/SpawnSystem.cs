@@ -15,7 +15,8 @@ public class SpawnSystem : MonoBehaviour
     [SerializeField] private float basePoliceSpawnChance = 0f;
     [SerializeField] private float maxPoliceSpawnChance = 0.35f;
     [SerializeField] private float policeChanceModifier = 0.75f;
-    
+    [SerializeField] private Transform NPCparent;
+
     private GameManager gameManager;
     private Coroutine spawnCoroutine;
 
@@ -46,11 +47,13 @@ public class SpawnSystem : MonoBehaviour
             case -1:
                 police = Instantiate(policePrefab, spawnPointRight.position, Quaternion.identity);
                 police.SetDirection(direction);
+                police.transform.SetParent(NPCparent);
                 break;
 
             case 1:
                 police = Instantiate(policePrefab, spawnPointLeft.position, Quaternion.identity);
                 police.SetDirection(direction);
+                police.transform.SetParent(NPCparent);
                 break;
 
             default:
@@ -68,17 +71,24 @@ public class SpawnSystem : MonoBehaviour
             case -1:
                 pedestrian = Instantiate(pedestrianPrefab, spawnPointRight.position, Quaternion.identity);
                 pedestrian.SetDirection(direction);
+                pedestrian.transform.SetParent(NPCparent);
                 break;
 
             case 1:
                 pedestrian = Instantiate(pedestrianPrefab, spawnPointLeft.position, Quaternion.identity);
                 pedestrian.SetDirection(direction);
+                pedestrian.transform.SetParent(NPCparent);
                 break;
 
             default:
                 Debug.LogError("[SpawnSystem] Invalid direction input in SpawnPedestrian");
                 break;
         }
+    }
+
+    public bool HasNPCs()
+    {
+        return NPCparent.childCount > 0;
     }
     
     private IEnumerator SpawnNPCs()

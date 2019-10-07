@@ -11,7 +11,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float moveSpeed = 10f;
     [SerializeField] private float stealDelay = 1f;
     [SerializeField] private ContactFilter2D contactFilter;
-    
+    [SerializeField] private LootEffect lootEffect;
+
     [Header("Hiding Settings")]
     [SerializeField] private float hideMaxTime = 5f;
     [SerializeField] private Color hiddenPlayerColor;
@@ -21,6 +22,8 @@ public class PlayerController : MonoBehaviour
     [Header("Animator Settings")]
     [SerializeField] Animator animator;
     [SerializeField] SpriteRenderer sr;
+
+
     private GameManager gameManager;
     private Rigidbody2D rigidBody;
     private Collider2D playerCollider;
@@ -30,11 +33,8 @@ public class PlayerController : MonoBehaviour
     private bool cooldownExpired = false;
 
     [HideInInspector] public float stealAmountMultiplier { get; set;}
-
     [HideInInspector] public float stealDelayMultiplier { get; set; }
-
     [HideInInspector] public float moveSpeedMultiplier { get; set; }
-
     [HideInInspector] public float hideTimeMultiplier { get; set; }
 
     private PlayerState currentState = PlayerState.WALKING;
@@ -125,8 +125,6 @@ public class PlayerController : MonoBehaviour
             {
                 if (collider.CompareTag("Alleyway"))
                 {
-                    Debug.Log("[PlayerController] Player is hiding");
-
                     currentState = PlayerState.HIDING;
 
                     transform.position = transform.position + Vector3.up * 0.5f;
@@ -139,8 +137,6 @@ public class PlayerController : MonoBehaviour
         }
         else if (currentState == PlayerState.HIDING)
         {
-            Debug.Log("[PlayerController] Player is coming out of hiding");
-
             transform.position = transform.position + Vector3.down * 0.5f;
             spriteRenderer.color = Color.white;
             playerCollider.enabled = true;
@@ -156,8 +152,6 @@ public class PlayerController : MonoBehaviour
         playerCollider.enabled = false;
 
         gameManager.EndRound(false);
-        
-        Debug.Log("[PlayerController] Player has been arrested");
     }
 
     public void Steal()
@@ -170,22 +164,41 @@ public class PlayerController : MonoBehaviour
 
     private IEnumerator StealRoutine()
     {
-        Debug.Log("[PlayerController] Player is attempting to steal...");
         currentState = PlayerState.STEALING;
         animator.SetBool("isStealing", true);
 
         yield return new WaitForSeconds(stealDelay * stealDelayMultiplier);
+        
+        int moneyStolen = 0;
+        int pedestrianCount = 0;
 
         playerCollider.OverlapCollider(contactFilter, colliderOverlaps);
         foreach(Collider2D collider in colliderOverlaps)
         {
             if (collider.GetComponent<Pedestrian>() != null)
             {
-                int moneyStolen = collider.GetComponent<Pedestrian>().Pickpocket(stealAmountMultiplier);
+                moneyStolen += collider.GetComponent<Pedestrian>().Pickpocket(stealAmountMultiplier);
+                pedestrianCount++;
             }
         }
-        if (currentState == PlayerState.STEALING) currentState = PlayerState.WALKING;
+
+        // If the player steals from more than 1 person at once, increase their loot
+        if (pedestrianCount > 1)
+        {
+            moneyStolen *= (pedestrianCount + 1);
+        }
+
+        if (moneyStolen > 0)
+        {
+            LootEffect effect = Instantiate(lootEffect, transform.position, Quaternion.identity);
+            effect.SetText("$" + moneyStolen);
+        }
+
+        if (currentState == PlayerState.STEALING)
+        {
+            currentState = PlayerState.WALKING;
+        }
+
         animator.SetBool("isStealing", false);
-        
     }
 }

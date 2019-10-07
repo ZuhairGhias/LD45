@@ -18,6 +18,7 @@ public class CutsceneManager : MonoBehaviour
     [SerializeField] private AudioSource audioSourceTV;
     [SerializeField] private AudioSource audioSourceDoor;
     [SerializeField] private AudioClip gunshot;
+    [SerializeField] private AudioClip endTrack;
 
     [Header("Other")]
     [SerializeField] private CutscenePlayer player;
@@ -40,7 +41,7 @@ public class CutsceneManager : MonoBehaviour
         {
             dialogueManager.LoadDialogue(restartDialogue);
 
-            TVText.text = "Pickpocket crimes on the rise";
+            TVText.text = "Pickpocketing on the rise";
 
             int playthroughCount = PlayerPrefs.GetInt("PlaythoughCount", 1);
             doorNumberText.text = playthroughCount.ToString();
@@ -99,6 +100,9 @@ public class CutsceneManager : MonoBehaviour
         if (GameManager.GameComplete)
         {
             dialogueManager.LoadDialogue(reendDialogue);
+
+            audioSourceGlobal.clip = endTrack;
+            audioSourceGlobal.Play();
         }
         else
         {

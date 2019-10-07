@@ -661,6 +661,7 @@ MonoBehaviour:
   audioSourceTV: {fileID: 523620250}
   audioSourceDoor: {fileID: 1958635634}
   gunshot: {fileID: 8300000, guid: 9b04d860c2924b944a803c1b643b3862, type: 3}
+  endTrack: {fileID: 8300000, guid: 6a5ad7d24b074db43ad931b91a8f913c, type: 3}
   player: {fileID: 2846584299641226096}
   doorNumberText: {fileID: 2086347056}
   TVText: {fileID: 1629073042}

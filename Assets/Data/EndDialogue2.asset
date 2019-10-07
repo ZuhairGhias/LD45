@@ -13,5 +13,6 @@ MonoBehaviour:
   m_Name: EndDialogue2
   m_EditorClassIdentifier: 
   sentences:
-  - "GAME TITLE                                      \n\na Ludum Dare 45 submission
-    by\n\nAlexander Mastryukov and Zuhair Ghias           \n\n\nStart with nothing"
+  - "GAME TITLE                                      \n\n\na Ludum Dare 45 submission
+    by\n\n\nAlexander Mastryukov and Zuhair Ghias           \n\nmusic by      \n\nCheckie
+    Brown    "

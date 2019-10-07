@@ -25,6 +25,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private Color hiddenPlayerColor;
     [SerializeField] private Canvas cooldownCanvas;
     [SerializeField] private Image cooldownBar;
+    [SerializeField] private Canvas lootCanvas;
+    [SerializeField] private Image lootRadial;
 
     [Header("Animator Settings")]
     [SerializeField] Animator animator;
@@ -171,11 +173,19 @@ public class PlayerController : MonoBehaviour
 
     private IEnumerator StealRoutine()
     {
+        lootCanvas.enabled = true;
         currentState = PlayerState.STEALING;
         animator.SetBool("isStealing", true);
 
-        yield return new WaitForSeconds(stealDelay * stealDelayMultiplier);
-        
+        float coolDown = 0f;
+        while(coolDown < stealDelay * stealDelayMultiplier)
+        {
+            coolDown = Mathf.Clamp(coolDown + Time.deltaTime, 0f, stealDelay * stealDelayMultiplier);
+            lootRadial.fillAmount = coolDown / (stealDelay * stealDelayMultiplier);
+            yield return null;
+        }
+        lootCanvas.enabled = false;
+
         int totalMoneyStolen = 0;
         int pedestrianCount = 0;
 

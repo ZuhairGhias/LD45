@@ -2017,8 +2017,8 @@ MonoBehaviour:
   spawnPointRight: {fileID: 437880361}
   spawnIntervals: {x: 1, y: 4}
   spawnIntervalModifier: 0.7
-  basePoliceSpawnChance: 0.05
-  maxPoliceSpawnChance: 0.6
+  basePoliceSpawnChance: 0.01
+  maxPoliceSpawnChance: 0.3
   policeChanceModifier: 0.75
   NPCparent: {fileID: 667297323}
 --- !u!1 &1133336016

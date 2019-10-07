@@ -3654,18 +3654,6 @@ PrefabInstance:
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 772929327}
-    - target: {fileID: 1474385028435833495, guid: e13fe3378b1f26246a1f9bbab7c2ad94,
-        type: 3}
-      propertyPath: lootEffect1
-      value: 
-      objectReference: {fileID: 753321980652352353, guid: 58f2a4b25d8d2b3469c41d918af4b71a,
-        type: 3}
-    - target: {fileID: 1474385028435833495, guid: e13fe3378b1f26246a1f9bbab7c2ad94,
-        type: 3}
-      propertyPath: lootEffect2
-      value: 
-      objectReference: {fileID: 2005056908129623668, guid: 6864e5363b38cda49a7bdaa0360d1008,
-        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e13fe3378b1f26246a1f9bbab7c2ad94, type: 3}
 --- !u!1 &2073330648

@@ -2313,7 +2313,7 @@ MonoBehaviour:
   shopCanvas: {fileID: 855339968}
   dynamicSky: {fileID: 1371874031}
   timerUI: {fileID: 811135384}
-  roundTimer: 5
+  roundTimer: 30
   heatBarUI: {fileID: 1097092753}
   currentHeat: 0
   heatPassiveCooldown: 0.02

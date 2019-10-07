@@ -169,7 +169,7 @@ public class PlayerController : MonoBehaviour
 
         yield return new WaitForSeconds(stealDelay * stealDelayMultiplier);
         
-        int moneyStolen = 0;
+        int totalMoneyStolen = 0;
         int pedestrianCount = 0;
 
         playerCollider.OverlapCollider(contactFilter, colliderOverlaps);
@@ -177,21 +177,26 @@ public class PlayerController : MonoBehaviour
         {
             if (collider.GetComponent<Pedestrian>() != null)
             {
-                moneyStolen += collider.GetComponent<Pedestrian>().Pickpocket(stealAmountMultiplier);
-                pedestrianCount++;
+                int moneyStolen = collider.GetComponent<Pedestrian>().Pickpocket(stealAmountMultiplier);
+
+                if (moneyStolen > 0)
+                {
+                    pedestrianCount++;
+                    totalMoneyStolen += moneyStolen;
+                }
             }
         }
 
-        // If the player steals from more than 1 person at once, increase their loot
+        // If the player steals from more than 1 person at once, multiply their loot
         if (pedestrianCount > 1)
         {
-            moneyStolen *= (pedestrianCount + 1);
+            totalMoneyStolen *= (pedestrianCount + 1);
         }
 
-        if (moneyStolen > 0)
+        if (totalMoneyStolen > 0)
         {
             LootEffect effect = Instantiate(lootEffect, transform.position, Quaternion.identity);
-            effect.SetText("$" + moneyStolen);
+            effect.SetText("$" + totalMoneyStolen);
         }
 
         if (currentState == PlayerState.STEALING)

@@ -348,7 +348,7 @@ MonoBehaviour:
     maxNormalAngle: 0
   lootEffect: {fileID: 753321980652352353, guid: 58f2a4b25d8d2b3469c41d918af4b71a,
     type: 3}
-  hideMaxTime: 5
+  hideMaxTime: 3
   hiddenPlayerColor: {r: 0.16981131, g: 0.16981131, b: 0.16981131, a: 0.88235295}
   cooldownCanvas: {fileID: 783330656}
   cooldownBar: {fileID: 111879589}

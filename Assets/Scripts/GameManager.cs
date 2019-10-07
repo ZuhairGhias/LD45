@@ -60,8 +60,6 @@ public class GameManager : MonoBehaviour
         player = FindObjectOfType<PlayerController>();
 
         Inventory.Reset();
-        
-        StartRound();
     }
 
     private void Update()

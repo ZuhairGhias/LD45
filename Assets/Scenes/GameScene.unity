@@ -1664,11 +1664,11 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 913963626}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 12, y: -3, z: 0}
+  m_LocalPosition: {x: 30, y: -3, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 1522534445}
-  m_RootOrder: 1
+  m_Father: {fileID: 1676787181}
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &913963628
 MonoBehaviour:
@@ -1679,7 +1679,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 913963626}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1b26b8072d540954db5f67b97dc68459, type: 3}
+  m_Script: {fileID: 11500000, guid: 27f3b0f658aad9345a1b58f1db8c854a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!61 &913963629
@@ -1732,7 +1732,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1033126011}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 11, y: -4.78, z: 0}
+  m_LocalPosition: {x: 25, y: -4.78, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1676787181}
@@ -2765,9 +2765,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 1869958169}
-  - {fileID: 913963627}
+  m_Children: []
   m_Father: {fileID: 1127043478}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -3024,6 +3022,8 @@ Transform:
   m_Children:
   - {fileID: 1033126012}
   - {fileID: 2013052344}
+  - {fileID: 1869958169}
+  - {fileID: 913963627}
   m_Father: {fileID: 1216589566}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -3096,7 +3096,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1869958169}
   - component: {fileID: 1869958171}
-  - component: {fileID: 1869958170}
   m_Layer: 8
   m_Name: DespawnLeft
   m_TagString: Untagged
@@ -3112,24 +3111,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1869958168}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -12, y: -3, z: 0}
+  m_LocalPosition: {x: -30, y: -3, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 1522534445}
-  m_RootOrder: 0
+  m_Father: {fileID: 1676787181}
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1869958170
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1869958168}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1b26b8072d540954db5f67b97dc68459, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!61 &1869958171
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -3212,7 +3199,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2013052343}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -11, y: -5.94, z: -1}
+  m_LocalPosition: {x: -25, y: -5.94, z: -1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1676787181}
@@ -4168,5 +4155,22 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 21300000, guid: 7b45943f5e78bd646b23a54f005744d6,
         type: 3}
+    - target: {fileID: 9009179297422392520, guid: ab9f5f596f2e6e148b0bb7c8e39f0009,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9009179296955126138, guid: ab9f5f596f2e6e148b0bb7c8e39f0009,
+        type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: 8847af6c076e7c54d8699b62e8286471,
+        type: 2}
+    - target: {fileID: 9009179296955126138, guid: ab9f5f596f2e6e148b0bb7c8e39f0009,
+        type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: 5830767104229083738, guid: 8847af6c076e7c54d8699b62e8286471,
+        type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ab9f5f596f2e6e148b0bb7c8e39f0009, type: 3}

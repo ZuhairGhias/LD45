@@ -117,7 +117,7 @@ public class SpawnSystem : MonoBehaviour
             }
 
             float multiplier = 1;
-            if (Inventory.HasCoffee) multiplier = spawnIntervalModifier;
+            if (Inventory.HasSign) multiplier = spawnIntervalModifier;
             yield return new WaitForSeconds(Random.Range(spawnIntervals.x, spawnIntervals.y) * multiplier);
         }
     }

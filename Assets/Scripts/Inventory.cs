@@ -13,7 +13,7 @@ public class Inventory : MonoBehaviour
     public static bool HasHoodie { get; set; }
     public static bool HasGuide { get; set; }
     public static bool HasScanner { get; set; }
-    public static bool HasCoffee { get; set; }
+    public static bool HasSign { get; set; }
     public static bool HasRevolver { get; set; }
 
     public static void Reset()
@@ -22,7 +22,7 @@ public class Inventory : MonoBehaviour
         HasScanner = false;
         HasBadge = false;
         HasBoots = false;
-        HasCoffee = false;
+        HasSign = false;
         HasGloves = false;
         HasGuide = false;
         HasHoodie = false;

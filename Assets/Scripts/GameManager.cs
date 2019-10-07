@@ -193,14 +193,29 @@ public class GameManager : MonoBehaviour
                 
             }
             yield return null;
-
         }
-        
     }
 
     public void RevolverBought()
     {
         GameComplete = true;
+        currentState = GameState.GAMEOVER;
+        player.GetComponent<PlayerController>().enabled = false;
+        player.GetComponent<InputController>().enabled = false;
+
+        PlayerPrefs.SetInt("PlaythoughCount", PlayerPrefs.GetInt("PlaythoughCount", 1) + 1);
+
+        StartCoroutine(LoadIntro());
+    }
+
+    private IEnumerator LoadIntro()
+    {
+        blackScreen.gameObject.SetActive(true);
+        blackScreen.canvasRenderer.SetAlpha(0f);
+        blackScreen.CrossFadeAlpha(1f, 2f, false);
+
+        yield return new WaitForSeconds(2f);
+        
         SceneManager.LoadScene("IntroScene");
     }
 }

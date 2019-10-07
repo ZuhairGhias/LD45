@@ -2313,7 +2313,7 @@ MonoBehaviour:
   shopCanvas: {fileID: 855339968}
   dynamicSky: {fileID: 1371874031}
   timerUI: {fileID: 811135384}
-  roundTimer: 30
+  roundTimer: 5
   heatBarUI: {fileID: 1097092753}
   currentHeat: 0
   heatPassiveCooldown: 0.02
@@ -4413,6 +4413,11 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 7494976990062056297, guid: 42f1315033bbf474891c438346707a02,
+        type: 3}
+      propertyPath: m_Color.a
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7494976989997840216, guid: 42f1315033bbf474891c438346707a02,
         type: 3}
       propertyPath: m_textInfo.characterCount
@@ -4451,6 +4456,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Shop
+      objectReference: {fileID: 0}
+    - target: {fileID: 9009179297601540748, guid: ab9f5f596f2e6e148b0bb7c8e39f0009,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9009179297601540749, guid: ab9f5f596f2e6e148b0bb7c8e39f0009,
         type: 3}

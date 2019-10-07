@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using TMPro;
 
 public class CutsceneManager : MonoBehaviour
 {
@@ -11,14 +12,17 @@ public class CutsceneManager : MonoBehaviour
     [SerializeField] private Dialogue endDialogue;
     [SerializeField] private Dialogue restartDialogue;
     [SerializeField] private Dialogue reendDialogue;
-
-    [SerializeField] private CutscenePlayer player;
-
+    
     [Header("Sounds")]
     [SerializeField] private AudioSource audioSourceGlobal;
     [SerializeField] private AudioSource audioSourceTV;
     [SerializeField] private AudioSource audioSourceDoor;
     [SerializeField] private AudioClip gunshot;
+
+    [Header("Other")]
+    [SerializeField] private CutscenePlayer player;
+    [SerializeField] private TextMeshProUGUI doorNumberText;
+    [SerializeField] private TextMeshProUGUI TVText;
 
     private enum IntroState { START, MAIN, END }
     private IntroState state = IntroState.START;
@@ -35,6 +39,11 @@ public class CutsceneManager : MonoBehaviour
         if (GameManager.GameComplete)
         {
             dialogueManager.LoadDialogue(restartDialogue);
+
+            TVText.text = "Pickpocket crimes on the rise";
+
+            int playthroughCount = PlayerPrefs.GetInt("PlaythoughCount", 1);
+            doorNumberText.text = playthroughCount.ToString();
         }
         else
         {

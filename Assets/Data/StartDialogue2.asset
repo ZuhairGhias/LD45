@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: StartDialogue2
   m_EditorClassIdentifier: 
   sentences:
-  - "You load the bullet into your new revolver.       \n\nIt is time."
+  - "You load a bullet into your new revolver.                       \n\nIt is time."

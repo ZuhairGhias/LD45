@@ -657,11 +657,13 @@ MonoBehaviour:
   endDialogue: {fileID: 11400000, guid: c8ca8d2da582d5d43b97443fa2dec99b, type: 2}
   restartDialogue: {fileID: 11400000, guid: 4c6d53845c03d5543b2edf411ea33414, type: 2}
   reendDialogue: {fileID: 11400000, guid: 19e4c857a948d1b45ba4af9d5feb1a34, type: 2}
-  player: {fileID: 2846584299641226096}
   audioSourceGlobal: {fileID: 556664999}
   audioSourceTV: {fileID: 523620250}
   audioSourceDoor: {fileID: 1958635634}
   gunshot: {fileID: 8300000, guid: 9b04d860c2924b944a803c1b643b3862, type: 3}
+  player: {fileID: 2846584299641226096}
+  doorNumberText: {fileID: 2086347056}
+  TVText: {fileID: 1629073042}
 --- !u!4 &556664998
 Transform:
   m_ObjectHideFlags: 0
@@ -2205,7 +2207,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 001
+  m_text: 1
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -2274,7 +2276,7 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_textInfo:
     textComponent: {fileID: 2086347056}
-    characterCount: 3
+    characterCount: 1
     spriteCount: 0
     spaceCount: 0
     wordCount: 1

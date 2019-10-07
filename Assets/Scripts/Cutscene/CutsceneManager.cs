@@ -1,13 +1,22 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class CutsceneManager : MonoBehaviour
 {
+    [Header("Dialogue System")]
     [SerializeField] private IntroDialogueManager dialogueManager;
-    [SerializeField] private CutscenePlayer player;
     [SerializeField] private Dialogue startDialogue;
     [SerializeField] private Dialogue endDialogue;
+    
+    [SerializeField] private CutscenePlayer player;
+
+    [Header("Sounds")]
+    [SerializeField] private AudioSource audioSourceGlobal;
+    [SerializeField] private AudioSource audioSourceTV;
+    [SerializeField] private AudioSource audioSourceDoor;
+    [SerializeField] private AudioClip gunshot;
 
     private enum IntroState { START, MAIN, END }
     private IntroState state = IntroState.START;
@@ -38,7 +47,7 @@ public class CutsceneManager : MonoBehaviour
                 break;
 
             case IntroState.END:
-                print("[Cutscene Manager] CUT! GOOD WORK EVERYONE!");
+                SceneManager.LoadScene("GameScene");
                 break;
         }
     }
@@ -49,14 +58,20 @@ public class CutsceneManager : MonoBehaviour
 
         dialogueManager.Hide(2f);
         player.EnablePlayer();
+
+        audioSourceTV.Play();
+        audioSourceDoor.Play();
     }
 
     private IEnumerator EndScene()
     {
-        // Wait for the gunshot (adjust this as needed)
-        yield return new WaitForSeconds(1.75f);
+        yield return new WaitForSeconds(3f);
 
-        // Play gunshot and show the UI
+        audioSourceGlobal.Stop();
+        audioSourceTV.Stop();
+
+        audioSourceGlobal.PlayOneShot(gunshot);
+
         dialogueManager.Unide(0f);
         
         yield return new WaitForSeconds(3);

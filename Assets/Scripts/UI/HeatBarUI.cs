@@ -14,6 +14,6 @@ public class HeatBarUI : MonoBehaviour
 
     public void UpdateHeat(float amount)
     {
-        heatBar.fillAmount = amount;
+        //heatBar.fillAmount = amount;
     }
 }

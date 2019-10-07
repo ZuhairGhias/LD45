@@ -51,6 +51,16 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
+        Inventory.Money = 0;
+        Inventory.HasAlcohol = false;
+        Inventory.HasBadge = false;
+        Inventory.HasBoots = false;
+        Inventory.HasCoffee = false;
+        Inventory.HasGloves = false;
+        Inventory.HasGuide = false;
+        Inventory.HasNewspaper = false;
+        Inventory.HasRevolver = false;
+        
         StartRound();
     }
 
@@ -72,7 +82,7 @@ public class GameManager : MonoBehaviour
 
             currentState = GameState.INPROGRESS;
             timeRemaining = roundTimer;
-            shopCanvas.enabled = false;
+            shopCanvas.gameObject.SetActive(false);
 
             spawnSystem.StartSpawning();
             StartCoroutine(CooldownHeat());
@@ -93,7 +103,7 @@ public class GameManager : MonoBehaviour
         {
             Debug.Log("[GameManager] Round complete, upgrading phase");
 
-            shopCanvas.enabled = true;
+            shopCanvas.gameObject.SetActive(true);
             currentState = GameState.UPGRADING;
             currentRound++;
         }

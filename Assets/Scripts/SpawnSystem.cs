@@ -27,6 +27,11 @@ public class SpawnSystem : MonoBehaviour
 
     private void Start()
     {
+        
+    }
+
+    private void OnDestroy()
+    {
         StopAllCoroutines();
     }
 

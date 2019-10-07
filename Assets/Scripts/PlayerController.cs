@@ -66,6 +66,7 @@ public class PlayerController : MonoBehaviour
         currentHidingCooldown = hideMaxTime;
 
         animator.SetFloat("stealTime", 1/stealDelay);
+        lootCanvas.enabled = false;
     }
 
     private void Update()

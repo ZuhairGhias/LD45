@@ -20,10 +20,14 @@ public class SpawnSystem : MonoBehaviour
     private GameManager gameManager;
     private Coroutine spawnCoroutine;
 
+    private void Awake()
+    {
+        gameManager = FindObjectOfType<GameManager>();
+    }
+
     private void Start()
     {
         StopAllCoroutines();
-        gameManager = FindObjectOfType<GameManager>();
     }
 
     public void StartSpawning()

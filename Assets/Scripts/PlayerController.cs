@@ -208,7 +208,7 @@ public class PlayerController : MonoBehaviour
         // If the player steals from more than 1 person at once, multiply their loot
         if (pedestrianCount > 1)
         {
-            totalMoneyStolen *= (pedestrianCount + 1);
+            totalMoneyStolen *= 2;
         }
 
         if (totalMoneyStolen > 0)

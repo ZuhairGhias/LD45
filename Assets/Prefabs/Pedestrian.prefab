@@ -147,8 +147,9 @@ MonoBehaviour:
   rigidBody: {fileID: 4870651421949545569}
   moveSpeedInterval: {x: 2, y: 3}
   spriteRenderer: {fileID: 4870651421949545583}
-  pickPocketMoneyInterval: {x: 1, y: 6}
+  pickPocketMoneyInterval: {x: 1, y: 20}
   pickpocketedColor: {r: 0.5943396, g: 0.5943396, b: 0.5943396, a: 1}
+  pickPocketWalkspeedMultiplier: 1.5
   animator: {fileID: 7123026883706572768}
 --- !u!95 &7123026883706572768
 Animator:

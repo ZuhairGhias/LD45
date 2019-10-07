@@ -91,7 +91,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_audioClip
       value: 
-      objectReference: {fileID: 8300000, guid: 9b04d860c2924b944a803c1b643b3862, type: 3}
+      objectReference: {fileID: 8300000, guid: dbf9c6c74c92afd4581dcc1068546fc1, type: 3}
     - target: {fileID: 7443109839462428243, guid: 58f2a4b25d8d2b3469c41d918af4b71a,
         type: 3}
       propertyPath: m_Mesh

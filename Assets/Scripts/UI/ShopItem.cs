@@ -12,6 +12,7 @@ public class ShopItem : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
     [SerializeField] private Image itemImage;
     [SerializeField] private TextMeshProUGUI itemCostText;
     [SerializeField] private TextMeshProUGUI descriptionText;
+    [SerializeField] private AudioSource purchaseAudio;
 
     [Header("Item Settings")]
     [SerializeField] private string itemName;
@@ -109,6 +110,7 @@ public class ShopItem : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 
             Debug.Log("[Shop] Purchased " + itemName);
 
+            purchaseAudio.Play();
             Inventory.Money -= itemCost;
             gameObject.SetActive(false);
         }

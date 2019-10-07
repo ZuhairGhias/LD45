@@ -1074,6 +1074,7 @@ MonoBehaviour:
   itemImage: {fileID: 1266072744}
   itemCostText: {fileID: 203189222}
   descriptionText: {fileID: 5490433663592707355}
+  purchaseAudio: {fileID: 4417163556297446316}
   itemName: Hoodie
   itemSprite: {fileID: 21300000, guid: 2e273cfd45538d3448375d983195b7f2, type: 3}
   itemCost: 35
@@ -1458,6 +1459,7 @@ MonoBehaviour:
   itemImage: {fileID: 1772717581}
   itemCostText: {fileID: 810497843}
   descriptionText: {fileID: 5490433663592707355}
+  purchaseAudio: {fileID: 4417163556297446316}
   itemName: Sign
   itemSprite: {fileID: 21300000, guid: 44a9bb761f67e4040a2ecf4e89783007, type: 3}
   itemCost: 13
@@ -1613,6 +1615,7 @@ MonoBehaviour:
   itemImage: {fileID: 1248372703}
   itemCostText: {fileID: 1346164240}
   descriptionText: {fileID: 5490433663592707355}
+  purchaseAudio: {fileID: 4417163556297446316}
   itemName: Pickpocket Guide
   itemSprite: {fileID: 21300000, guid: be68784b89211a04a9ed71428b3b7ac7, type: 3}
   itemCost: 50
@@ -2455,6 +2458,7 @@ MonoBehaviour:
   itemImage: {fileID: 4893208742173833237}
   itemCostText: {fileID: 6219393409175894682}
   descriptionText: {fileID: 5490433663592707355}
+  purchaseAudio: {fileID: 4417163556297446316}
   itemName: Police Scanner
   itemSprite: {fileID: 21300000, guid: 74b18e2c2a6734f47991fcbd1e17b466, type: 3}
   itemCost: 35
@@ -2684,6 +2688,7 @@ MonoBehaviour:
   itemImage: {fileID: 3144182467761859875}
   itemCostText: {fileID: 8986290878031396337}
   descriptionText: {fileID: 5490433663592707355}
+  purchaseAudio: {fileID: 4417163556297446316}
   itemName: Gloves
   itemSprite: {fileID: 21300000, guid: c23934e16d3f22946aad00516107eca2, type: 3}
   itemCost: 20
@@ -3151,6 +3156,7 @@ MonoBehaviour:
   itemImage: {fileID: 4706424575469949976}
   itemCostText: {fileID: 3241109252609537768}
   descriptionText: {fileID: 5490433663592707355}
+  purchaseAudio: {fileID: 4417163556297446316}
   itemName: Revolver
   itemSprite: {fileID: 21300000, guid: f63415a2c0932c248b2dbc9bf329e7bc, type: 3}
   itemCost: 235
@@ -3920,6 +3926,7 @@ MonoBehaviour:
   itemImage: {fileID: 2198186551182753482}
   itemCostText: {fileID: 4245945185997843648}
   descriptionText: {fileID: 5490433663592707355}
+  purchaseAudio: {fileID: 4417163556297446316}
   itemName: Fake Badge
   itemSprite: {fileID: 21300000, guid: 7c445563e40ca7347ad8f72b9eed530c, type: 3}
   itemCost: 50
@@ -4075,6 +4082,7 @@ MonoBehaviour:
   itemImage: {fileID: 1917846215988568399}
   itemCostText: {fileID: 6983468515477993690}
   descriptionText: {fileID: 5490433663592707355}
+  purchaseAudio: {fileID: 4417163556297446316}
   itemName: Boots
   itemSprite: {fileID: 21300000, guid: c2ba32903ddbecf409fd570003c3b518, type: 3}
   itemCost: 25
@@ -4166,6 +4174,7 @@ GameObject:
   - component: {fileID: 9009179297601540749}
   - component: {fileID: 9009179297601540750}
   - component: {fileID: 9009179297601540751}
+  - component: {fileID: 4417163556297446316}
   m_Layer: 5
   m_Name: Shop
   m_TagString: Untagged
@@ -4240,6 +4249,102 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!82 &4417163556297446316
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9009179297601540748}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: be59443bb2e77c74da40e828fcf30e35, type: 3}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &9156028628996528156
 GameObject:
   m_ObjectHideFlags: 0

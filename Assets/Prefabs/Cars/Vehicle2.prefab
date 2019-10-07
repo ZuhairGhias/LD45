@@ -12,6 +12,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: Vehicle2
       objectReference: {fileID: 0}
+    - target: {fileID: 5347404834338733681, guid: 3c5037db46e6222478e8e0248988d7d7,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 9d3e478e840729b45b0953df81227d38,
+        type: 3}
     - target: {fileID: 5347404833021356431, guid: 3c5037db46e6222478e8e0248988d7d7,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -67,21 +73,20 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5347404834338733680, guid: 3c5037db46e6222478e8e0248988d7d7,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0.874
-      objectReference: {fileID: 0}
-    - target: {fileID: 5347404834338733681, guid: 3c5037db46e6222478e8e0248988d7d7,
-        type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 21300000, guid: 9d3e478e840729b45b0953df81227d38,
-        type: 3}
     - target: {fileID: 5347404834338733678, guid: 3c5037db46e6222478e8e0248988d7d7,
         type: 3}
       propertyPath: m_Name
       value: van
       objectReference: {fileID: 0}
+    - target: {fileID: 5347404834338733680, guid: 3c5037db46e6222478e8e0248988d7d7,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.874
+      objectReference: {fileID: 0}
+    - target: {fileID: 7111330934367296116, guid: 3c5037db46e6222478e8e0248988d7d7,
+        type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: df2709d7e651f19488c4c04458871aea, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3c5037db46e6222478e8e0248988d7d7, type: 3}

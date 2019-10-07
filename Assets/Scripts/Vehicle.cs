@@ -7,6 +7,7 @@ public class Vehicle : MonoBehaviour
 
     private float direction = 1;
     [SerializeField] SpriteRenderer sr;
+    [SerializeField] AudioSource audioSource;
 
     private Rigidbody2D rb;
     
@@ -28,6 +29,7 @@ public class Vehicle : MonoBehaviour
         }
 
         this.direction = direction;
+        audioSource.pitch = Random.Range(0.5f, 0.8f);
     }
 
     public void Move()

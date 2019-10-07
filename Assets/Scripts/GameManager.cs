@@ -1,6 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using TMPro;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -27,6 +30,15 @@ public class GameManager : MonoBehaviour
     [SerializeField] private float stealDelayMultiplier = 0.75f;
 
     [SerializeField] private float moveSpeedMultiplier = 1.25f;
+
+    [Header("Game Over Settings")]
+    [SerializeField] private Image blackScreen;
+    [SerializeField] private TextMeshProUGUI continuePrompt;
+    [SerializeField] private float blackoutDelay;
+    [SerializeField] private float continueDelay;
+    [SerializeField] private AudioSource audioSource;
+    [SerializeField] private AudioClip gun_reload;
+    [SerializeField] private AudioClip gun_shot;
 
     private GameState currentState = GameState.PREPARING;
     private int currentRound = 1;
@@ -90,6 +102,8 @@ public class GameManager : MonoBehaviour
             Debug.Log("[GameManager] Game over, you lose");
 
             currentState = GameState.GAMEOVER;
+            StartCoroutine(GameOverRoutine());
+
         }
     }
 
@@ -133,6 +147,23 @@ public class GameManager : MonoBehaviour
         {
             AdjustHeat(-heatPassiveCooldown * Time.deltaTime);
 
+            yield return null;
+        }
+    }
+
+    private IEnumerator GameOverRoutine()
+    {
+        audioSource.clip = gun_reload;
+        audioSource.Play();
+        yield return new WaitForSeconds(blackoutDelay);
+        blackScreen.gameObject.SetActive(true);
+        audioSource.clip = gun_shot;
+        audioSource.Play();
+        yield return new WaitForSeconds(continueDelay);
+        continuePrompt.gameObject.SetActive(true);
+        while (true)
+        {
+            if (Input.GetKeyDown("space")) SceneManager.LoadScene("GameScene");
             yield return null;
         }
     }

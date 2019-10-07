@@ -54,6 +54,7 @@ public class GameManager : MonoBehaviour
 
     private void Awake()
     {
+        player = FindObjectOfType<PlayerController>();
         PlayerController.OnPickpocket += StealMoney;
     }
     private void OnDestroy()
@@ -63,8 +64,6 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
-        player = FindObjectOfType<PlayerController>();
-
         Inventory.Reset();
     }
 

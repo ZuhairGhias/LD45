@@ -28,4 +28,9 @@ public class Inventory : MonoBehaviour
         HasHoodie = false;
         HasRevolver = false;
     }
+
+    public static void SoftReset()
+    {
+        Money = 0;
+    }
 }

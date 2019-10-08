@@ -35,6 +35,7 @@ public class ShopItem : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 
         gm = FindObjectOfType<GameManager>();
 
+        CheckIfPurchased();
     }
 
     private void Update()
@@ -50,7 +51,6 @@ public class ShopItem : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
             itemCostText.color = unaffordableTextColor;
         }
     }
-
     
     public void OnPointerEnter(PointerEventData eventData)
     {
@@ -112,6 +112,62 @@ public class ShopItem : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
         else
         {
             Debug.Log("[Shop] Insufficient funds to purchase " + itemName);
+        }
+    }
+
+    private void CheckIfPurchased()
+    {
+        switch (itemName)
+        {
+            case "Boots":
+                if (Inventory.HasBoots)
+                {
+                    gameObject.SetActive(false);
+                }
+                
+                break;
+
+            case "Gloves":
+                if (Inventory.HasGloves)
+                {
+                    gameObject.SetActive(false);
+                }
+                break;
+
+            case "Fake Badge":
+                if (Inventory.HasBadge)
+                {
+                    gameObject.SetActive(false);
+                }
+                break;
+
+            case "Hoodie":
+                if (Inventory.HasHoodie)
+                {
+                    gameObject.SetActive(false);
+                }
+                break;
+
+            case "Pickpocket Guide":
+                if (Inventory.HasGuide)
+                {
+                    gameObject.SetActive(false);
+                }
+                break;
+
+            case "Police Scanner":
+                if (Inventory.HasScanner)
+                {
+                    gameObject.SetActive(false);
+                }
+                break;
+
+            case "Sign":
+                if (Inventory.HasSign)
+                {
+                    gameObject.SetActive(false);
+                }
+                break;
         }
     }
 }

@@ -64,7 +64,7 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
-        Inventory.Reset();
+        Inventory.SoftReset();
     }
 
     private void Update()

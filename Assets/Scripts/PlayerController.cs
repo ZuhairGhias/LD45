@@ -115,10 +115,12 @@ public class PlayerController : MonoBehaviour
             rigidBody.MovePosition(new Vector2(transform.position.x, transform.position.y) + Vector2.right * direction * moveSpeed * moveSpeedMultiplier* Time.fixedDeltaTime);
             if(direction > 0)
             {
+                if (playerCollider.offset.x < 0) playerCollider.offset = new Vector2(-playerCollider.offset.x, playerCollider.offset.y);
                 sr.flipX = false;
             }
             else if(direction < 0)
             {
+                if (playerCollider.offset.x > 0) playerCollider.offset = new Vector2(-playerCollider.offset.x, playerCollider.offset.y);
                 sr.flipX = true;
             }
             animator.SetFloat("walkSpeed", Mathf.Abs(direction) * 1.5f);
@@ -137,7 +139,8 @@ public class PlayerController : MonoBehaviour
                 {
                     currentState = PlayerState.HIDING;
 
-                    transform.position = transform.position + Vector3.up * 0.5f;
+                    transform.position = new Vector3(Mathf.Clamp(transform.position.x, collider.transform.position.x - 0.5f, collider.transform.position.x + 0.5f), transform.position.y + 0.5f, transform.position.z);
+                    //transform.position = transform.position + Vector3.up * 0.5f;
                     spriteRenderer.color = hiddenPlayerColor;
                     playerCollider.enabled = false;
                     

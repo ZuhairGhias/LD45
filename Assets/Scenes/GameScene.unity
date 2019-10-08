@@ -282,7 +282,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.2, y: 0.58}
+  m_Size: {x: 0.53, y: 0.58}
   m_EdgeRadius: 0
 --- !u!1 &68998858
 GameObject:
@@ -3100,7 +3100,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.2, y: 0.58}
+  m_Size: {x: 0.53, y: 0.58}
   m_EdgeRadius: 0
 --- !u!114 &1510934074 stripped
 MonoBehaviour:
@@ -3654,11 +3654,6 @@ PrefabInstance:
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 772929327}
-    - target: {fileID: 1474385028435833495, guid: e13fe3378b1f26246a1f9bbab7c2ad94,
-        type: 3}
-      propertyPath: moveSpeed
-      value: 2.5
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e13fe3378b1f26246a1f9bbab7c2ad94, type: 3}
 --- !u!1 &2073330648
